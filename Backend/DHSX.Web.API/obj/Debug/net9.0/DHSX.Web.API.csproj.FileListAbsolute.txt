@@ -1,0 +1,507 @@
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.AssemblyReference.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfoInputs.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfo.cs
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.CoreCompileInputs.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\appsettings.Development.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\appsettings.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.staticwebassets.endpoints.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.exe
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.deps.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.runtimeconfig.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.pdb
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\CommunityToolkit.HighPerformance.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Humanizer.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Minio.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Oracle.EntityFrameworkCore.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Oracle.ManagedDataAccess.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.CodeDom.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Diagnostics.PerformanceCounter.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.DirectoryServices.Protocols.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.IO.Hashing.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Reactive.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Application.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Domain.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Infrastructure.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Application.pdb
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Infrastructure.pdb
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Domain.pdb
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\scopedcss\bundle\DHSX.Web.API.styles.css
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.development.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\swae.build.ex.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.8EFA1ADC.Up2Date
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\refint\DHSX.Web.API.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.pdb
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.genruntimeconfig.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\ref\DHSX.Web.API.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cs
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\appsettings.Development.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\appsettings.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.staticwebassets.endpoints.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.exe
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.deps.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.runtimeconfig.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.pdb
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\CommunityToolkit.HighPerformance.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Humanizer.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Minio.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Oracle.EntityFrameworkCore.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Oracle.ManagedDataAccess.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.CodeDom.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Diagnostics.PerformanceCounter.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.DirectoryServices.Protocols.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.IO.Hashing.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Reactive.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Application.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Domain.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Infrastructure.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Application.pdb
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Infrastructure.pdb
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Domain.pdb
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.AssemblyReference.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfoInputs.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfo.cs
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.CoreCompileInputs.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cs
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.sourcelink.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\scopedcss\bundle\DHSX.Web.API.styles.css
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.development.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\swae.build.ex.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.8EFA1ADC.Up2Date
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\refint\DHSX.Web.API.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.pdb
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.genruntimeconfig.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\ref\DHSX.Web.API.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\appsettings.Development.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\appsettings.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.staticwebassets.endpoints.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.exe
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.deps.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.runtimeconfig.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.pdb
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\CommunityToolkit.HighPerformance.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Humanizer.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Minio.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Oracle.EntityFrameworkCore.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Oracle.ManagedDataAccess.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.CodeDom.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Diagnostics.PerformanceCounter.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.DirectoryServices.Protocols.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.IO.Hashing.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Reactive.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Application.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Domain.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Infrastructure.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Application.pdb
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Infrastructure.pdb
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Domain.pdb
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.AssemblyReference.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfoInputs.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfo.cs
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.CoreCompileInputs.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cs
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.sourcelink.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\scopedcss\bundle\DHSX.Web.API.styles.css
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.development.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\swae.build.ex.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.8EFA1ADC.Up2Date
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\refint\DHSX.Web.API.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.pdb
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.genruntimeconfig.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.API\obj\Debug\net9.0\ref\DHSX.Web.API.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\appsettings.Development.json
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\appsettings.json
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.staticwebassets.endpoints.json
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.exe
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.deps.json
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.runtimeconfig.json
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.API.pdb
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\CommunityToolkit.HighPerformance.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Humanizer.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.AspNetCore.OpenApi.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Microsoft.OpenApi.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Minio.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Mono.TextTemplating.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Oracle.EntityFrameworkCore.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Oracle.ManagedDataAccess.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.CodeDom.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Convention.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Hosting.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.Runtime.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Composition.TypedParts.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Diagnostics.PerformanceCounter.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.DirectoryServices.Protocols.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.IO.Hashing.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Reactive.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Application.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Domain.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Infrastructure.dll
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Application.pdb
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Infrastructure.pdb
+D:\Task\Backend\DHSX.Web.API\bin\Debug\net9.0\DHSX.Web.Domain.pdb
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.AssemblyReference.cache
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfoInputs.cache
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfo.cs
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.CoreCompileInputs.cache
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cs
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cache
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\rjimswa.dswa.cache.json
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\scopedcss\bundle\DHSX.Web.API.styles.css
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.json
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.json.cache
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.development.json
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\swae.build.ex.cache
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.8EFA1ADC.Up2Date
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.dll
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\refint\DHSX.Web.API.dll
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.pdb
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.genruntimeconfig.cache
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\ref\DHSX.Web.API.dll

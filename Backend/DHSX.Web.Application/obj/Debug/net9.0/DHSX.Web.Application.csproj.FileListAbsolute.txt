@@ -1,0 +1,62 @@
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.csproj.AssemblyReference.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.AssemblyInfoInputs.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.AssemblyInfo.cs
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.csproj.CoreCompileInputs.cache
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.deps.json
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.pdb
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Domain.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Domain.pdb
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.77A34265.Up2Date
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\refint\DHSX.Web.Application.dll
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.pdb
+D:\Project by me\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\ref\DHSX.Web.Application.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.deps.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.pdb
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Domain.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Domain.pdb
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.csproj.AssemblyReference.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.AssemblyInfoInputs.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.AssemblyInfo.cs
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.csproj.CoreCompileInputs.cache
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.sourcelink.json
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.77A34265.Up2Date
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\refint\DHSX.Web.Application.dll
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.pdb
+D:\optimize-evn-fe\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\ref\DHSX.Web.Application.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.deps.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.pdb
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Domain.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Domain.pdb
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.csproj.AssemblyReference.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.AssemblyInfoInputs.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.AssemblyInfo.cs
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.csproj.CoreCompileInputs.cache
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.sourcelink.json
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.77A34265.Up2Date
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\refint\DHSX.Web.Application.dll
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.pdb
+D:\EVN\BaoCaoDieuHanh\Backend\DHSX.Web.Application\obj\Debug\net9.0\ref\DHSX.Web.Application.dll
+D:\Task\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.deps.json
+D:\Task\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.dll
+D:\Task\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Application.pdb
+D:\Task\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Domain.dll
+D:\Task\Backend\DHSX.Web.Application\bin\Debug\net9.0\DHSX.Web.Domain.pdb
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.csproj.AssemblyReference.cache
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.AssemblyInfoInputs.cache
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.AssemblyInfo.cs
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.csproj.CoreCompileInputs.cache
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.77A34265.Up2Date
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.dll
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\refint\DHSX.Web.Application.dll
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.pdb
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\ref\DHSX.Web.Application.dll

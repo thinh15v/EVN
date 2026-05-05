@@ -1,0 +1,381 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|solutionrelative:dhsx.web.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\interfaces\\ireportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\interfaces\\ireportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28256BAE-6CF0-4BC7-A539-44BCAD384F97}|DHSX.Web.Infrastructure\\DHSX.Web.Infrastructure.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.infrastructure\\storage\\miniostorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28256BAE-6CF0-4BC7-A539-44BCAD384F97}|DHSX.Web.Infrastructure\\DHSX.Web.Infrastructure.csproj|solutionrelative:dhsx.web.infrastructure\\storage\\miniostorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\interfaces\\istorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\interfaces\\istorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28256BAE-6CF0-4BC7-A539-44BCAD384F97}|DHSX.Web.Infrastructure\\DHSX.Web.Infrastructure.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.infrastructure\\contexts\\oracledbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28256BAE-6CF0-4BC7-A539-44BCAD384F97}|DHSX.Web.Infrastructure\\DHSX.Web.Infrastructure.csproj|solutionrelative:dhsx.web.infrastructure\\contexts\\oracledbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|solutionrelative:dhsx.web.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\dtos\\reports\\approvereportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\dtos\\reports\\approvereportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\dtos\\uploadreportfiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\dtos\\uploadreportfiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|solutionrelative:dhsx.web.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28256BAE-6CF0-4BC7-A539-44BCAD384F97}|DHSX.Web.Infrastructure\\DHSX.Web.Infrastructure.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.infrastructure\\services\\sendemailservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28256BAE-6CF0-4BC7-A539-44BCAD384F97}|DHSX.Web.Infrastructure\\DHSX.Web.Infrastructure.csproj|solutionrelative:dhsx.web.infrastructure\\services\\sendemailservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\dhsx.web.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\dhsx.web.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\services\\mockauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\services\\mockauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\services\\departmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\dtos\\departments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\dtos\\departments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.api\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|solutionrelative:dhsx.web.api\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{014CEDBA-1600-471A-9F1E-503BE1B0C305}|DHSX.Web.API\\DHSX.Web.API.csproj|solutionrelative:dhsx.web.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|d:\\project by me\\baocaodieuhanh\\backend\\dhsx.web.application\\dtos\\auth\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4ED410C-3CFA-4C64-ACB6-A007AEF48771}|DHSX.Web.Application\\DHSX.Web.Application.csproj|solutionrelative:dhsx.web.application\\dtos\\auth\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IReportService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IReportService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\Interfaces\\IReportService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IReportService.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\Interfaces\\IReportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T07:59:56.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OracleDbContext.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Infrastructure\\Contexts\\OracleDbContext.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Infrastructure\\Contexts\\OracleDbContext.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Infrastructure\\Contexts\\OracleDbContext.cs",
+              "RelativeToolTip": "DHSX.Web.Infrastructure\\Contexts\\OracleDbContext.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwBQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T07:53:40.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DHSX.Web.Application",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DHSX.Web.Application.csproj",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\DHSX.Web.Application.csproj",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DHSX.Web.Application.csproj",
+              "RelativeToolTip": "DHSX.Web.Application\\DHSX.Web.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-19T06:45:02.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\appsettings.json",
+              "RelativeDocumentMoniker": "DHSX.Web.API\\appsettings.json",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\appsettings.json",
+              "RelativeToolTip": "DHSX.Web.API\\appsettings.json",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-19T03:55:21.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SendEmailServices.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Infrastructure\\Services\\SendEmailServices.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Infrastructure\\Services\\SendEmailServices.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Infrastructure\\Services\\SendEmailServices.cs",
+              "RelativeToolTip": "DHSX.Web.Infrastructure\\Services\\SendEmailServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T06:46:00.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IStorageService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IStorageService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\Interfaces\\IStorageService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IStorageService.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\Interfaces\\IStorageService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:18:23.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MinioStorageService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Infrastructure\\Storage\\MinioStorageService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Infrastructure\\Storage\\MinioStorageService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Infrastructure\\Storage\\MinioStorageService.cs",
+              "RelativeToolTip": "DHSX.Web.Infrastructure\\Storage\\MinioStorageService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAowBYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:08:24.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ReportsController.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\Controllers\\ReportsController.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.API\\Controllers\\ReportsController.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\Controllers\\ReportsController.cs",
+              "RelativeToolTip": "DHSX.Web.API\\Controllers\\ReportsController.cs",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAIwK8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:03:13.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReportService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Services\\ReportService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\Services\\ReportService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Services\\ReportService.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\Services\\ReportService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAqwCMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:02:53.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IEmailService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\Interfaces\\IEmailService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IEmailService.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\Interfaces\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T06:45:08.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\Program.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.API\\Program.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\Program.cs",
+              "RelativeToolTip": "DHSX.Web.API\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAvwB8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T03:41:45.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApproveReportDto.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DTOs\\Reports\\ApproveReportDto.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\DTOs\\Reports\\ApproveReportDto.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DTOs\\Reports\\ApproveReportDto.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\DTOs\\Reports\\ApproveReportDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T07:22:16.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UploadReportFileDto.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DTOs\\UploadReportFileDto.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\DTOs\\UploadReportFileDto.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DTOs\\UploadReportFileDto.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\DTOs\\UploadReportFileDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:08:58.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\Interfaces\\IAuthService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IAuthService.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\Interfaces\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T03:39:56.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IDepartmentService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IDepartmentService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\Interfaces\\IDepartmentService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Interfaces\\IDepartmentService.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\Interfaces\\IDepartmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T03:58:35.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DepartmentService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Services\\DepartmentService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\Services\\DepartmentService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Services\\DepartmentService.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\Services\\DepartmentService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T03:59:26.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MockAuthService.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Services\\MockAuthService.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\Services\\MockAuthService.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\Services\\MockAuthService.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\Services\\MockAuthService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T03:40:09.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DepartmentsController.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\Controllers\\DepartmentsController.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.API\\Controllers\\DepartmentsController.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\Controllers\\DepartmentsController.cs",
+              "RelativeToolTip": "DHSX.Web.API\\Controllers\\DepartmentsController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAUwDgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T03:59:52.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Departments.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DTOs\\Departments.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\DTOs\\Departments.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DTOs\\Departments.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\DTOs\\Departments.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T04:02:16.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.API\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "DHSX.Web.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T03:41:21.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "LoginRequestDto.cs",
+              "DocumentMoniker": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DTOs\\Auth\\LoginRequestDto.cs",
+              "RelativeDocumentMoniker": "DHSX.Web.Application\\DTOs\\Auth\\LoginRequestDto.cs",
+              "ToolTip": "D:\\Project by me\\BaoCaoDieuHanh\\Backend\\DHSX.Web.Application\\DTOs\\Auth\\LoginRequestDto.cs",
+              "RelativeToolTip": "DHSX.Web.Application\\DTOs\\Auth\\LoginRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T03:36:57.704Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
