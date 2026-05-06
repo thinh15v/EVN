@@ -60,3 +60,4 @@ D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.dll
 D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\refint\DHSX.Web.Application.dll
 D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.pdb
 D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\ref\DHSX.Web.Application.dll
+D:\Task\Backend\DHSX.Web.Application\obj\Debug\net9.0\DHSX.Web.Application.sourcelink.json

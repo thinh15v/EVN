@@ -8,11 +8,22 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi 
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// ==========================================
+// THÊM CẤU HÌNH CORS Ở ĐÂY ĐỂ NEXT.JS GỌI ĐƯỢC
+// ==========================================
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowNextJs", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000") // Domain của Next.js
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddScoped<IAuthService, MockAuthService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
@@ -39,7 +50,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// ==========================================
+// GỌI CORS Ở ĐÂY (PHẢI NẰM TRƯỚC UseAuthorization)
+// ==========================================
+app.UseCors("AllowNextJs");
+
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
- 

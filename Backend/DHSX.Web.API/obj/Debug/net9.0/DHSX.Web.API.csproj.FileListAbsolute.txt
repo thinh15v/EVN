@@ -505,3 +505,4 @@ D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\refint\DHSX.Web.API.dll
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.pdb
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.genruntimeconfig.cache
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\ref\DHSX.Web.API.dll
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.sourcelink.json

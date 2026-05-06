@@ -76,3 +76,4 @@ D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\refint\DHSX.Web.Infrast
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.pdb
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.genruntimeconfig.cache
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\ref\DHSX.Web.Infrastructure.dll
+D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.sourcelink.json
