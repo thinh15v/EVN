@@ -5,6 +5,7 @@ namespace DHSX.Web.Application.Interfaces
 {
     public interface IReportService
     {
+        Task<object> GetReportDetailForAdminAsync(int reportId);
         Task<bool> CreateReportAsync(CreateReportRequestDto request);
         Task<bool> UploadReportFileAsync(UploadReportFileDto request);
         Task<IEnumerable<ReportListDto>> GetReportsAsync();

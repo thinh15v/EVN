@@ -391,5 +391,59 @@ namespace DHSX.Web.Application.Services
                 throw new Exception("Lỗi khi phê duyệt báo cáo: " + ex.Message);
             }
         }
+        public async Task<object> GetReportDetailForAdminAsync(int reportId)
+        {
+            var report = await _context.Reports.FindAsync((decimal)reportId);
+            if (report == null) throw new Exception("Không tìm thấy báo cáo này.");
+
+            // 1. Kéo dữ liệu thô từ Database lên RAM trước (Tránh lỗi dịch SQL của Oracle)
+            var assignmentsDb = await _context.ReportAssignments
+                .Where(a => a.ReportId == reportId)
+                .ToListAsync();
+
+            var deptIds = assignmentsDb.Select(a => a.DeptId).Distinct().ToList();
+            var departments = await _context.Departments
+                .Where(d => deptIds.Contains(d.DeptId))
+                .ToListAsync();
+
+            var assignmentIds = assignmentsDb.Select(a => a.AssignmentId).ToList();
+            var versionsDb = await _context.ReportVersions
+                .Where(v => assignmentIds.Contains(v.AssignmentId))
+                .ToListAsync();
+
+            // 2. Lắp ghép dữ liệu bằng C# (Tuyệt đối an toàn)
+            var assignments = assignmentsDb.Select(a => new
+            {
+                AssignmentId = a.AssignmentId,
+                DeptName = departments.FirstOrDefault(d => d.DeptId == a.DeptId)?.DeptName ?? "Không rõ",
+                AssignStatus = a.AssignStatus,
+                IsLocked = a.IsLocked == true, // Ép kiểu an toàn trên C#
+                
+                Files = versionsDb
+                        .Where(v => v.AssignmentId == a.AssignmentId)
+                        .OrderByDescending(v => v.VersionNumber)
+                        .Select(v => new
+                        {
+                            VersionId = v.VersionId,
+                            FileName = v.FileName,
+                            Version = v.VersionNumber,
+                            IsFinal = v.IsSelected == true, // Ép kiểu an toàn trên C#
+                            Notes = v.Note,
+                            UploadedAt = v.UploadedAt
+                        }).ToList()
+            }).ToList();
+
+            return new
+            {
+                Report = new 
+                { 
+                    ReportName = report.ReportName, 
+                    ReportCode = report.ReportCode, 
+                    GlobalStatus = report.GlobalStatus 
+                },
+                Assignments = assignments
+            };
+        }
     }
+    
 }

@@ -1,10 +1,11 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import React, { useMemo } from "react";
-import { ConfigProvider, theme } from "antd";
+import { ConfigProvider } from "antd";
 import locale from "antd/locale/vi_VN";
 import "dayjs/locale/vi";
 import Layout from "@/components/Layout";
+import { RoleProvider } from '@/context/RoleContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   const themeConfig = useMemo(() => ({
@@ -18,8 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
         headerBg: "#00529C",
       },
       Table: {
-        headerBg: "#00529C",
-        headerColor: "#ffffff",
+        headerBg: "#f8fafc", // Nên để nền sáng cho header table để nổi bật text
+        headerColor: "#475569",
+        headerFontWeight: 700,
       }
     },
   }), []);
@@ -27,15 +29,17 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ConfigProvider locale={locale} theme={themeConfig}>
       {/* 
-        SỬA TẠI ĐÂY: 
-        Bạn phải bọc <Layout> bên ngoài <Component /> 
-        thì trang web mới hiện ra Sidebar và Header.
+        BƯỚC QUAN TRỌNG: 
+        RoleProvider phải bọc ngoài cùng (hoặc ngay dưới ConfigProvider)
+        để cả Layout và Component bên trong đều dùng chung một "kho" dữ liệu.
       */}
-      <Layout>
-        <div style={{ minHeight: '100vh', backgroundColor: '#f1f5f9' }}>
-          <Component {...pageProps} />
-        </div>
-      </Layout>
+      <RoleProvider> 
+        <Layout>
+          <div style={{ minHeight: '100vh', backgroundColor: '#f1f5f9' }}>
+            <Component {...pageProps} />
+          </div>
+        </Layout>
+      </RoleProvider>
     </ConfigProvider>
   );
 }

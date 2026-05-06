@@ -172,5 +172,19 @@ namespace DHSX.Web.API.Controllers
                 return BadRequest(new { success = false, message = ex.Message });
             }
         }
+
+        [HttpGet("{id}/detail")]
+        public async Task<IActionResult> GetReportDetail(int id)
+        {
+            try
+            {
+                var data = await _reportService.GetReportDetailForAdminAsync(id);
+                return Ok(new { success = true, data = data });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Lỗi khi lấy chi tiết: " + ex.Message });
+            }
+        }
     }
 }
