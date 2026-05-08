@@ -20,7 +20,17 @@ namespace DHSX.Web.Application.Interfaces
 
         // Xóa file tổng hợp
         Task<bool> DeleteFinalFileAsync(int fileId);
+        
+        // Lấy danh sách báo cáo theo Ban
         Task<IEnumerable<DeptReportListDto>> GetReportsByDeptAsync(int deptId);
+        
+        // Khóa tất cả phân công của một báo cáo
+        Task<bool> LockAllAssignmentsAsync(int reportId);
+
+        // Cập nhật phân công cho một báo cáo
+        Task<bool> UpdateAssignmentsAsync(int reportId, List<int> departmentIds);
+
+        Task<IEnumerable<ReportVersionDto>> GetReportVersionsAsync(int reportId, int deptId);
 
     }
 }

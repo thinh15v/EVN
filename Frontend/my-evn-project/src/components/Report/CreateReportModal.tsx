@@ -59,7 +59,7 @@ export default function CreateReportModal({ open, onCancel, onSuccess }: Props) 
         <Row gutter={16}>
           <Col span={12}>
             {/* ĐÃ FIX WARNING KEY CỦA THẺ SELECT */}
-            <Form.Item label={<span style={{ fontWeight: 600 }}>Phân loại</span>} name="reportType" initialValue="Báo cáo EVN">
+            <Form.Item label={<span style={{ fontWeight: 600 }}>Phân loại</span>} name="reportType" initialValue="EVN">
               <Select
                 size="large"
                 style={{ borderRadius: 8 }}

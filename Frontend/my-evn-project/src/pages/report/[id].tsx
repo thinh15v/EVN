@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Button, Card, Col, Row, Typography, Collapse, Tag, Space, Upload, message, Empty, Spin } from 'antd';
+import { Button, Card, Col, Row, Typography, Collapse, Tag, Space, Upload, Empty, Spin, Modal, message } from 'antd';
 import { 
   LeftOutlined, TeamOutlined, LockOutlined, UnlockOutlined, 
-  InboxOutlined, DownloadOutlined, FileExcelOutlined, CheckCircleOutlined
+  InboxOutlined, DownloadOutlined, FileExcelOutlined, CheckCircleOutlined, ExclamationCircleOutlined
 } from '@ant-design/icons';
 import { ReportService } from '@/services/ReportService';
 import dayjs from 'dayjs';
+import ManageAssignmentModal from '@/components/Report/ManageAssignmentModal';
 
 const { Title, Text } = Typography;
 const { Dragger } = Upload;
@@ -20,11 +21,21 @@ export default function ReportDetail() {
   const [finalFiles, setFinalFiles] = useState<any[]>([]); 
   const [loading, setLoading] = useState(true);
 
+  const [messageApi, messageContextHolder] = message.useMessage();
+  const [modalApi, modalContextHolder] = Modal.useModal();
+  const [isManageModalOpen, setIsManageModalOpen] = useState(false);
+
+  // --- LOGIC KIỂM TRA KHÓA TOÀN CỤC ---
+  // Nếu globalStatus chứa chữ "khóa" hoặc "hoàn thành", coi như toàn bộ đợt bị khóa
+  const globalStatusText = (reportInfo?.globalStatus || reportInfo?.GlobalStatus || "").toLowerCase();
+  const isGlobalLocked = globalStatusText.includes("khóa") || globalStatusText.includes("hoàn thành");
+
   useEffect(() => {
+    if (!router.isReady) return;
     if (id) {
       fetchDetailData(Number(id));
     }
-  }, [id]);
+  }, [router.isReady, id]); 
 
   const fetchDetailData = async (reportId: number) => {
     setLoading(true);
@@ -38,79 +49,130 @@ export default function ReportDetail() {
         setReportInfo(detailRes.data.report || detailRes.data.Report); 
         setAssignments(detailRes.data.assignments || detailRes.data.Assignments || []); 
       }
-      
       if (finalFilesRes.success) {
         setFinalFiles(finalFilesRes.data || []);
       }
     } catch (error) {
-      message.error('Lỗi khi tải chi tiết báo cáo!');
+      messageApi.error('Lỗi khi tải chi tiết báo cáo!');
     } finally {
       setLoading(false);
     }
   };
 
-  const uploadProps = {
-    name: 'file',
-    multiple: false,
-    action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188', 
-    onChange(info: any) { /* Xử lý upload */ }
+  const handleLockAll = () => {
+    modalApi.confirm({
+      title: 'Xác nhận khóa toàn bộ',
+      icon: <ExclamationCircleOutlined />,
+      content: 'Tất cả các Ban sẽ không thể chỉnh sửa số liệu sau khi khóa. Bạn có chắc chắn?',
+      okText: 'Khóa toàn bộ',
+      okType: 'danger',
+      cancelText: 'Hủy',
+      onOk: async () => {
+        try {
+          const res = await ReportService.lockAllAssignments(Number(id));
+          if (res && res.success) {
+            messageApi.success('Đã khóa toàn bộ báo cáo!');
+            fetchDetailData(Number(id)); 
+          } else {
+            messageApi.error(res?.message || 'Có lỗi xảy ra!');
+          }
+        } catch (error) {
+          messageApi.error('Lỗi kết nối!');
+        }
+      },
+    });
   };
 
-  if (loading) return <div style={{ textAlign: 'center', padding: 50 }}><Spin size="large" /></div>;
+  const handleUnlockAssignment = (assignmentId: number, deptName: string) => {
+    modalApi.confirm({
+      title: `Mở khóa cho ${deptName}`,
+      icon: <UnlockOutlined style={{ color: '#faad14' }} />,
+      content: 'Ban này sẽ có thể tiếp tục nộp file mới. Bạn có chắc chắn?',
+      okText: 'Mở khóa',
+      cancelText: 'Hủy',
+      onOk: async () => {
+        try {
+          const payload = { 
+            assignmentId, userId: 1, reason: "Admin mở khóa",
+            userFullName: "Admin", userPosition: "Quản trị viên", userDeptName: "Ban Giám Đốc"
+          };
+          const res = await ReportService.unlockAssignment(payload);
+          if (res && res.success) {
+            messageApi.success(`Đã mở khóa cho ${deptName}!`);
+            fetchDetailData(Number(id)); 
+          }
+        } catch (error) {
+          messageApi.error('Lỗi kết nối!');
+        }
+      }
+    });
+  };
 
-  // CHUẨN BỊ MẢNG ITEMS CHO COLLAPSE (CHUẨN ANT DESIGN V5)
+  const handleSaveAssignments = async (values: any) => {
+    try {
+      const res = await ReportService.updateAssignments(Number(id), values.departmentIds);
+      if (res && res.success) {
+        messageApi.success('Cập nhật phân công thành công!');
+        setIsManageModalOpen(false);
+        fetchDetailData(Number(id)); 
+      }
+    } catch (error) {
+      messageApi.error('Lỗi kết nối!');
+    }
+  };
+
+  if (loading) return <div style={{ textAlign: 'center', padding: 100 }}><Spin size="large" /></div>;
+
   const collapseItems = assignments.map((assign: any, index: number) => {
-    const isLocked = assign.isLocked || assign.IsLocked;
+    // SỬA TẠI ĐÂY: isLocked sẽ là true nếu riêng Ban đó khóa HOẶC Admin khóa cả đợt
+    const isLocked = assign.isLocked || assign.IsLocked || isGlobalLocked;
     const deptName = assign.deptName || assign.DeptName || 'Tên Ban';
     const assignStatus = assign.assignStatus || assign.AssignStatus || 'CHƯA CẬP NHẬT';
     const filesList = assign.files || assign.Files || [];
+    const assignmentId = assign.assignmentId || assign.AssignmentId;
 
     return {
       key: index.toString(),
       label: <span style={{ fontSize: 16, fontWeight: 700, color: '#1e293b' }}>{deptName}</span>,
       extra: (
         <Space size="middle" onClick={(e) => e.stopPropagation()}>
-          {isLocked ? (
-            <Tag color="success" style={{ fontWeight: 600, padding: '4px 12px', borderRadius: 6 }}>ĐÃ XÁC NHẬN</Tag>
-          ) : (
-            <Tag style={{ fontWeight: 600, padding: '4px 12px', borderRadius: 6 }}>{assignStatus.toUpperCase()}</Tag>
-          )}
-          {isLocked && (
-            <Button size="small" icon={<UnlockOutlined />} style={{ color: '#dc2626', borderColor: '#fecaca', fontWeight: 600, borderRadius: 4 }}>Mở khóa</Button>
+          <Tag color={isLocked ? "success" : "processing"} style={{ fontWeight: 600, padding: '4px 12px', borderRadius: 6 }}>
+            {isLocked ? "ĐÃ XÁC NHẬN" : assignStatus.toUpperCase()}
+          </Tag>
+          
+          {/* Chỉ hiện nút Mở khóa nếu Ban đó bị khóa NHƯNG Admin chưa khóa toàn bộ đợt */}
+          {isLocked && !isGlobalLocked && (
+            <Button 
+              size="small" 
+              icon={<UnlockOutlined />} 
+              onClick={() => handleUnlockAssignment(assignmentId, deptName)}
+              style={{ color: '#dc2626', borderColor: '#fecaca', fontWeight: 600, borderRadius: 4 }}
+            >
+              Mở khóa
+            </Button>
           )}
         </Space>
       ),
-      style: { backgroundColor: isLocked ? '#ffffff' : '#f8fafc', border: isLocked ? '1px solid #e2e8f0' : '1px dashed #cbd5e1', borderRadius: 8, marginBottom: 16 },
+      style: { 
+        backgroundColor: isLocked ? '#ffffff' : '#f8fafc', 
+        border: isLocked ? '1px solid #e2e8f0' : '1px dashed #cbd5e1', 
+        borderRadius: 8, 
+        marginBottom: 16 
+      },
       children: (
         <div style={{ padding: '0 24px' }}>
           {filesList.length > 0 ? filesList.map((file: any, fIndex: number) => {
             const isFinal = file.isFinal || file.IsFinal;
-            const fileName = file.fileName || file.FileName;
-            const version = file.version || file.Version || 1;
-            const uploadedAt = file.uploadedAt || file.UploadedAt;
-            const notes = file.notes || file.Notes;
-
             return (
-              <div key={fIndex} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', padding: '16px', border: isFinal ? '1px solid #bbf7d0' : '1px solid #e2e8f0', borderRadius: 8, marginBottom: 12, backgroundColor: isFinal ? '#f0fdf4' : '#ffffff' }}>
-                <div style={{ display: 'flex', gap: 12 }}>
-                  <FileExcelOutlined style={{ fontSize: 24, color: isFinal ? '#16a34a' : '#2563eb', marginTop: 4 }} />
+              <div key={fIndex} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', border: isFinal ? '1px solid #bbf7d0' : '1px solid #e2e8f0', borderRadius: 8, marginBottom: 12, backgroundColor: isFinal ? '#f0fdf4' : '#ffffff' }}>
+                <Space size={12}>
+                  <FileExcelOutlined style={{ fontSize: 24, color: isFinal ? '#16a34a' : '#2563eb' }} />
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                      <span style={{ fontSize: 15, fontWeight: 700, color: isFinal ? '#166534' : '#334155' }}>{fileName}</span>
-                      {isFinal && <Tag color="#16a34a" style={{ fontWeight: 'bold', borderRadius: 12 }}>BẢN CHỐT</Tag>}
-                    </div>
-                    <div style={{ fontSize: 13, color: '#64748b', display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                      <Tag style={{ margin: 0, borderRadius: 4 }}>v{version}</Tag>
-                      <span>{uploadedAt ? dayjs(uploadedAt).format('HH:mm DD/MM/YYYY') : 'Đang cập nhật...'}</span>
-                    </div>
-                    {notes && (
-                      <div style={{ fontSize: 13, color: '#475569', fontStyle: 'italic', backgroundColor: isFinal ? '#ffffff' : '#f8fafc', padding: '6px 12px', borderRadius: 6, border: '1px solid #f1f5f9' }}>
-                        Ghi chú: "{notes}"
-                      </div>
-                    )}
+                    <div style={{ fontWeight: 700 }}>{file.fileName || file.FileName}</div>
+                    <Text type="secondary" style={{ fontSize: 12 }}>v{file.version || file.Version || 1}</Text>
                   </div>
-                </div>
-                <Button type="text" icon={<DownloadOutlined style={{ fontSize: 18, color: isFinal ? '#16a34a' : '#2563eb' }} />} />
+                </Space>
+                {isFinal && <Tag color="#16a34a">BẢN CHỐT</Tag>}
               </div>
             );
           }) : (
@@ -123,13 +185,14 @@ export default function ReportDetail() {
 
   return (
     <>
+      {messageContextHolder}
+      {modalApi && modalContextHolder}
+      
       <div style={{ paddingBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'center', marginBottom: 24, backgroundColor: '#fff', padding: '16px 24px', borderRadius: 8, boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-          <Button type="link" icon={<LeftOutlined />} onClick={() => router.push('/report')} style={{ fontWeight: 600, fontSize: 16, paddingLeft: 0, marginRight: 16 }}>
-            Quay lại
-          </Button>
           <Title level={4} style={{ margin: 0, color: '#1e293b' }}>
-            {reportInfo?.reportName || reportInfo?.ReportName || 'Tên báo cáo trống'} 
+            {reportInfo?.reportName || 'Tên báo cáo trống'} 
+            {isGlobalLocked && <Tag color="error" style={{ marginLeft: 12 }}>ĐÃ KHÓA TOÀN BỘ</Tag>}
           </Title>
         </div>
 
@@ -139,52 +202,37 @@ export default function ReportDetail() {
               title={<span style={{ fontSize: 18, fontWeight: 'bold' }}>Tình hình nộp báo cáo của các Ban</span>}
               extra={
                 <Space>
-                  <Button icon={<TeamOutlined />} style={{ color: '#2563eb', borderColor: '#bfdbfe', backgroundColor: '#eff6ff', fontWeight: 600, borderRadius: 6 }}>Quản lý phân công</Button>
-                  <Button icon={<LockOutlined />} style={{ color: '#dc2626', borderColor: '#fecaca', backgroundColor: '#fef2f2', fontWeight: 600, borderRadius: 6 }}>Khóa toàn bộ</Button>
+                  <Button disabled={isGlobalLocked} icon={<TeamOutlined />} onClick={() => setIsManageModalOpen(true)} style={{ color: '#2563eb', backgroundColor: '#eff6ff', fontWeight: 600 }}>Quản lý phân công</Button>
+                  {isGlobalLocked ? (
+                    <Button icon={<UnlockOutlined />} style={{ fontWeight: 600 }}>Mở khóa toàn bộ</Button>
+                  ) : (
+                    <Button icon={<LockOutlined />} onClick={handleLockAll} style={{ color: '#dc2626', backgroundColor: '#fef2f2', fontWeight: 600 }}>Khóa toàn bộ</Button>
+                  )}
                 </Space>
               }
               style={{ borderRadius: 12 }}
             >
-              {assignments.length > 0 ? (
-                // SỬ DỤNG ITEMS MỚI CHO COLLAPSE V5
-                <Collapse 
-                  defaultActiveKey={['0']} 
-                  ghost 
-                  expandIconPlacement="start" 
-                  items={collapseItems} 
-                />
-              ) : (
-                <Empty description="Chưa có phân công nào cho báo cáo này" />
-              )}
+              <Collapse defaultActiveKey={['0']} ghost items={collapseItems} />
             </Card>
           </Col>
 
           <Col span={8}>
-            {/* SỬA CARD STYLE Ở ĐÂY */}
-            <Card 
-              style={{ borderRadius: 12 }} 
-              styles={{ header: { backgroundColor: '#eff6ff' } }} 
-              title={<div><CheckCircleOutlined /> File Báo Cáo Tổng Hợp</div>}
-            >
-              <Dragger {...uploadProps}>
-                <p className="ant-upload-drag-icon"><InboxOutlined style={{ color: '#60a5fa', fontSize: 48 }} /></p>
+            <Card title={<div><CheckCircleOutlined /> File Báo Cáo Tổng Hợp</div>} style={{ borderRadius: 12 }}>
+              <Dragger disabled={isGlobalLocked} action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188">
+                <p className="ant-upload-drag-icon"><InboxOutlined style={{ color: isGlobalLocked ? '#cbd5e1' : '#60a5fa', fontSize: 48 }} /></p>
                 <p className="ant-upload-text">Kéo thả file tổng hợp vào đây</p>
               </Dragger>
-
-              <div style={{ marginTop: 32 }}>
-                <Text style={{ fontSize: 12, fontWeight: 700, color: '#64748b', marginBottom: 16, display: 'block' }}>DANH SÁCH FILE FINAL</Text>
-                {finalFiles.length > 0 ? (
-                  finalFiles.map((ff: any, i: number) => (
-                    <div key={i}>{ff.fileName || ff.FileName}</div> 
-                  ))
-                ) : (
-                  <div style={{ textAlign: 'center' }}><Text type="secondary" italic>Chưa có file tổng hợp nào.</Text></div>
-                )}
-              </div>
             </Card>
           </Col>
         </Row>
       </div>
+
+      <ManageAssignmentModal 
+        isOpen={isManageModalOpen} 
+        onClose={() => setIsManageModalOpen(false)} 
+        onSave={handleSaveAssignments}
+        currentAssignments={assignments}
+      />
     </>
   );
 }

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using DHSX.Web.Application.Interfaces;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DHSX.Web.Domain.Entities;
 
-public partial class OracleDbContext : DbContext , IOracleDbContext
+public partial class OracleDbContext : DbContext, IOracleDbContext
 {
     public OracleDbContext()
     {
@@ -18,17 +17,11 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
     }
 
     public virtual DbSet<Department> Departments { get; set; }
-
     public virtual DbSet<Report> Reports { get; set; }
-
     public virtual DbSet<ReportAssignment> ReportAssignments { get; set; }
-
     public virtual DbSet<ReportFinalFile> ReportFinalFiles { get; set; }
-
     public virtual DbSet<ReportTimeline> ReportTimelines { get; set; }
-
     public virtual DbSet<ReportVersion> ReportVersions { get; set; }
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -37,9 +30,7 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
         modelBuilder.Entity<Department>(entity =>
         {
             entity.HasKey(e => e.DeptId).HasName("SYS_C008223");
-
             entity.ToTable("DEPARTMENTS", "BAOCAO");
-
             entity.HasIndex(e => e.DeptCode, "SYS_C008224").IsUnique();
 
             entity.Property(e => e.DeptId)
@@ -63,9 +54,7 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
         modelBuilder.Entity<Report>(entity =>
         {
             entity.HasKey(e => e.ReportId).HasName("SYS_C008231");
-
             entity.ToTable("REPORTS", "BAOCAO");
-
             entity.HasIndex(e => e.ReportCode, "SYS_C008232").IsUnique();
 
             entity.Property(e => e.ReportId)
@@ -108,9 +97,7 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
         modelBuilder.Entity<ReportAssignment>(entity =>
         {
             entity.HasKey(e => e.AssignmentId).HasName("SYS_C008236");
-
             entity.ToTable("REPORT_ASSIGNMENTS", "BAOCAO");
-
             entity.HasIndex(e => new { e.ReportId, e.DeptId }, "UQ_REPORT_DEPT").IsUnique();
 
             entity.Property(e => e.AssignmentId)
@@ -131,14 +118,14 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
             entity.Property(e => e.DeptId)
                 .HasColumnType("NUMBER")
                 .HasColumnName("DEPT_ID");
+                
+            // ĐÃ SỬA: Ép kiểu cứng về số nguyên cho Oracle
             entity.Property(e => e.IsLocked)
                 .HasDefaultValueSql("0")
                 .HasColumnType("NUMBER(1)")
-                .HasConversion(
-                    v => v.HasValue ? (v.Value ? 1 : 0) : (int?)null,
-                    v => v.HasValue ? v.Value == 1 : (bool?)null
-                )
+                .HasConversion<int?>() // Ép dứt điểm True=1, False=0
                 .HasColumnName("IS_LOCKED");
+                
             entity.Property(e => e.ReportId)
                 .HasColumnType("NUMBER")
                 .HasColumnName("REPORT_ID");
@@ -157,7 +144,6 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
         modelBuilder.Entity<ReportFinalFile>(entity =>
         {
             entity.HasKey(e => e.FileId).HasName("SYS_C008242");
-
             entity.ToTable("REPORT_FINAL_FILES", "BAOCAO");
 
             entity.Property(e => e.FileId)
@@ -189,7 +175,6 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
         modelBuilder.Entity<ReportTimeline>(entity =>
         {
             entity.HasKey(e => e.TimelineId).HasName("SYS_C008248");
-
             entity.ToTable("REPORT_TIMELINE", "BAOCAO");
 
             entity.Property(e => e.TimelineId)
@@ -243,7 +228,6 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
         modelBuilder.Entity<ReportVersion>(entity =>
         {
             entity.HasKey(e => e.VersionId).HasName("SYS_C008257");
-
             entity.ToTable("REPORT_VERSIONS", "BAOCAO");
 
             entity.Property(e => e.VersionId)
@@ -261,10 +245,14 @@ public partial class OracleDbContext : DbContext , IOracleDbContext
                 .HasMaxLength(500)
                 .IsUnicode(false)
                 .HasColumnName("FILE_PATH");
+                
+            // ĐÃ SỬA: Đề phòng lỗi tương tự khi Ban chốt file
             entity.Property(e => e.IsSelected)
                 .HasDefaultValueSql("0")
                 .HasColumnType("NUMBER(1)")
+                .HasConversion<int?>() // Thêm cái này để tránh lỗi khi duyệt file
                 .HasColumnName("IS_SELECTED");
+                
             entity.Property(e => e.Note)
                 .HasMaxLength(500)
                 .IsUnicode(false)

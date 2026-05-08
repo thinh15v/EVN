@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Button, Input, Tag, Progress, Space, Typography, ConfigProvider, message } from 'antd';
-import { SearchOutlined, PlusOutlined, HistoryOutlined, ClockCircleOutlined, UploadOutlined } from '@ant-design/icons';
+import { Table, Button, Input, Tag, Progress, Space, Typography, message } from 'antd';
+import { SearchOutlined, PlusOutlined, HistoryOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import { ReportService } from '@/services/ReportService';
 import CreateReportModal from '@/components/Report/CreateReportModal'; 
+import AuditLogModal from '@/components/Report/AuditLogModal'; // Đảm bảo đúng đường dẫn
 import { useRouter } from 'next/router';
 import { useRole } from '@/context/RoleContext';
 
 const { Text } = Typography;
 
 export default function ReportList() {
-  const { role } = useRole(); // Lấy góc nhìn từ Context dùng chung
+  const { role } = useRole(); 
   const router = useRouter();
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Tự động gọi lại API khi Góc nhìn (role) thay đổi
+  // --- FIX LỖI BIẾN Ở ĐÂY ---
+  const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
+  const [selectedReportId, setSelectedReportId] = useState<number | null>(null);
+  const [selectedReportInfo, setSelectedReportInfo] = useState<any>(null);
+
   useEffect(() => {
     fetchReportData();
   }, [role]);
@@ -25,11 +30,9 @@ export default function ReportList() {
     setLoading(true);
     try {
       let result;
-      // KIỂM TRA VAI TRÒ ĐỂ GỌI API PHÙ HỢP
       if (role === 'admin') {
         result = await ReportService.getReports();
       } else {
-        // Mặc định gọi API lấy báo cáo của Ban Kỹ thuật (ID = 2)
         result = await ReportService.getReportsByDept(2);
       }
 
@@ -40,13 +43,10 @@ export default function ReportList() {
           name: item.reportName,
           type: item.reportType,
           deadline: item.deadline ? dayjs(item.deadline).format('YYYY-MM-DD HH:mm') : 'Chưa có hạn',
-          // Dữ liệu cho Admin
           percent: item.totalAssigned > 0 ? Math.round((item.totalCompleted / item.totalAssigned) * 100) : 0,
           count: `${item.totalCompleted || 0}/${item.totalAssigned || 0}`,
-          // Trạng thái: Lấy trạng thái tổng nếu là Admin, lấy trạng thái gán nếu là Ban
           status: role === 'admin' ? item.globalStatus : (item.assignStatus || 'CHƯA CẬP NHẬT'),
         }));
-        
         setData(formattedData);
       } else {
         message.error(result?.message || 'Không thể lấy dữ liệu báo cáo!');
@@ -68,7 +68,9 @@ export default function ReportList() {
         <div>
           <div style={{ fontWeight: 'bold', color: '#1e293b', fontSize: 14 }}>{record.name}</div>
           <div style={{ fontSize: 12, color: '#64748b', marginTop: 4 }}>
-            Mã: {record.id} {record.type && `• Phân loại: ${record.type}`}
+            Mã: {record.id} {record.type && (
+              <span> • Phân loại: <span style={{ color: '#3b82f6', fontWeight: 600 }}>{record.type}</span></span>
+            )}
           </div>
         </div>
       ),
@@ -83,7 +85,6 @@ export default function ReportList() {
         </div>
       ),
     },
-    // CHỈ HIỂN THỊ CỘT TIẾN ĐỘ NẾU LÀ ADMIN
     ...(role === 'admin' ? [{
       title: <Text style={{ fontSize: 12, fontWeight: 700, color: '#64748b' }}>TIẾN ĐỘ</Text>,
       key: 'progress',
@@ -110,44 +111,69 @@ export default function ReportList() {
         );
       },
     },
-    {
+{
   title: <Text style={{ fontSize: 12, fontWeight: 700, color: '#64748b' }}>THAO TÁC</Text>,
   key: 'action',
   align: 'right' as const,
   render: (_: any, record: any) => {
-    // 1. Hàm xác định tên nút dựa trên role
-    const renderButtonText = () => {
-      switch (role) {
-        case 'admin':
-          return 'Quản lý & Tổng hợp';
-        case 'leader':
-          return 'Phê duyệt số liệu'; // Text dành cho Lãnh đạo
-        case 'staff':
-        default:
-          return 'Tải file báo cáo';  // Text dành cho Nhân viên
+    // 1. Xác định cấu hình nút
+    const getActionConfig = () => {
+      if (role === 'admin') {
+        return { text: 'Quản lý & Tổng hợp', color: '#1e293b', url: `/report/${record.key}` };
       }
+      if (role === 'leader') {
+        return { text: 'Phê duyệt số liệu', color: '#1e293b', url: `/report/approve/${record.key}` };
+      }
+      // Dòng bạn đang bị lỗi
+      return { text: 'Tải file báo cáo', color: '#1e293b', url: `/report/submit/${record.key}` };
     };
+
+    const config = getActionConfig();
 
     return (
       <Space size="large">
-        <HistoryOutlined style={{ fontSize: 18, color: '#94a3b8', cursor: 'pointer' }} />
+        <HistoryOutlined 
+          style={{ fontSize: 18, color: '#94a3b8', cursor: 'pointer' }}
+          onClick={(e) => {
+            e.stopPropagation();
+            setSelectedReportId(Number(record.key)); 
+            setSelectedReportInfo({ reportName: record.name, reportCode: record.id });
+            setIsAuditModalOpen(true);
+          }} 
+        />
         <Button 
+          type="primary"
           style={{ 
-            backgroundColor: '#1e293b', 
-            color: 'white', 
+            backgroundColor: config.color, 
             borderRadius: 8, 
             fontWeight: 600, 
             border: 'none', 
             height: 38 
           }}
-          onClick={() => router.push(`/report/${record.key}`)} 
+          onClick={(e) => {
+            // NGĂN CHẶN XUNG ĐỘT SỰ KIỆN
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log("Đang chuyển hướng tới:", config.url);
+
+            if (role === 'leader') {
+              router.push({
+                pathname: config.url,
+                query: { deptId: 2 }
+              });
+            } else {
+              // Đối với Staff và Admin
+              router.push(config.url);
+            }
+          }}
         >
-          {renderButtonText()}
+          {config.text}
         </Button>
       </Space>
     );
   },
-},
+}
   ];
 
   return (
@@ -159,7 +185,6 @@ export default function ReportList() {
           style={{ width: 320, borderRadius: 8, height: 42, backgroundColor: '#ffffff', border: 'none', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}
         />
         
-        {/* CHỈ ADMIN MỚI THẤY NÚT KHỞI TẠO */}
         {role === 'admin' && (
           <Button 
             type="primary" 
@@ -181,6 +206,17 @@ export default function ReportList() {
         onCancel={() => setIsModalOpen(false)} 
         onSuccess={fetchReportData} 
       />
+
+      {/* --- ĐÃ ĐỒNG BỘ TÊN BIẾN Ở ĐÂY --- */}
+      {selectedReportId && (
+        <AuditLogModal 
+        isOpen={isAuditModalOpen}
+        onClose={() => setIsAuditModalOpen(false)}
+        reportId={selectedReportId!}
+        reportInfo={selectedReportInfo}
+        currentAssignments={[]} // <--- TRUYỀN DANH SÁCH BAN Ở ĐÂY
+      />
+      )}
     </div>
   );
 }

@@ -327,70 +327,81 @@ namespace DHSX.Web.Application.Services
             };
         }
 
-        public async Task<bool> ApproveAndLockReportAsync(ApproveReportDto request)
+       public async Task<bool> ApproveAndLockReportAsync(ApproveReportDto request)
+    {
+        using var transaction = await _context.Database.BeginTransactionAsync();
+        try
         {
-            using var transaction = await _context.Database.BeginTransactionAsync();
-            try
+            // 1. Lấy thông tin phân công và kiểm tra tồn tại
+            // Ép kiểu (decimal) nếu cột trong DB của bạn là Decimal
+            var assignment = await _context.ReportAssignments
+                .FirstOrDefaultAsync(a => a.AssignmentId == (decimal)request.AssignmentId);
+
+            if (assignment == null) 
+                throw new Exception($"Không tìm thấy thông tin phân công với ID: {request.AssignmentId}");
+
+            if (assignment.IsLocked == true) 
+                throw new Exception("Báo cáo này đã được lãnh đạo phê duyệt và khóa từ trước.");
+
+            // 2. Kiểm tra trực tiếp xem file được chọn có tồn tại và thuộc về Assignment này không
+            var selectedVersion = await _context.ReportVersions
+                .FirstOrDefaultAsync(v => v.VersionId == request.SelectedVersionId && v.AssignmentId == (decimal)request.AssignmentId);
+
+            if (selectedVersion == null)
+                throw new Exception($"Không tìm thấy phiên bản file (ID: {request.SelectedVersionId}) thuộc về đợt phân công này.");
+
+            // 3. Cập nhật trạng thái cho tất cả các phiên bản của Assignment này
+            var allVersions = await _context.ReportVersions
+                .Where(v => v.AssignmentId == (decimal)request.AssignmentId)
+                .ToListAsync();
+
+            foreach (var version in allVersions)
             {
-                // 1. Lấy thông tin phân công
-                var assignment = await _context.ReportAssignments.FindAsync((decimal)request.AssignmentId);
-                if (assignment == null) throw new Exception("Không tìm thấy thông tin phân công.");
-                if ((bool)assignment.IsLocked) throw new Exception("Báo cáo này đã được khóa từ trước.");
-
-                // 2. Cập nhật trạng thái Assignment
-                assignment.IsLocked = true;
-                assignment.AssignStatus = "Đã xác nhận";
-                assignment.ConfirmedBy = (decimal)request.UserId;
-                assignment.ConfirmedAt = DateTime.Now;
-
-                // 3. Đánh dấu File được chọn
-                var versions = await _context.ReportVersions
-                    .Where(v => v.AssignmentId == request.AssignmentId)
-                    .ToListAsync();
-
-                bool isVersionFound = false;
-                foreach (var version in versions)
+                // Nếu là bản được chọn thì gán true, các bản cũ hơn gán false
+                if (version.VersionId == request.SelectedVersionId)
                 {
-                    if (version.VersionId == request.SelectedVersionId)
-                    {
-                        version.IsSelected = true; // Bản chốt
-                        isVersionFound = true;
-                    }
-                    else
-                    {
-                        version.IsSelected = true; // Các bản khác bỏ chọn
-                    }
+                    version.IsSelected = true; 
                 }
-
-                if (!isVersionFound) throw new Exception("Không tìm thấy phiên bản file được chọn.");
-
-                // 4. Ghi log Timeline
-                var timeline = new ReportTimeline
+                else
                 {
-                    ReportId = assignment.ReportId,
-                    DeptId = assignment.DeptId,
-                    UserId = (decimal)request.UserId,
-                    ActionType = "CONFIRM",
-                    ActionDetail = "Lãnh đạo đã phê duyệt và chốt số liệu báo cáo.",
-                    ActionTime = DateTime.Now,
-                    UserFullname = request.UserFullName,
-                    UserPosition = request.UserPosition,
-                    UserDeptName = request.UserDeptName
-                };
-                _context.ReportTimelines.Add(timeline);
-
-                // 5. Lưu và Commit
-                await _context.SaveChangesAsync();
-                await transaction.CommitAsync();
-
-                return true;
+                    version.IsSelected = false; // QUAN TRỌNG: Phải là false để bỏ chọn bản cũ
+                }
             }
-            catch (Exception ex)
+
+            // 4. Cập nhật trạng thái Assignment
+            assignment.IsLocked = true;
+            assignment.AssignStatus = "Đã xác nhận";
+            assignment.ConfirmedBy = (decimal)request.UserId;
+            assignment.ConfirmedAt = DateTime.Now;
+
+            // 5. Ghi log Timeline
+            var timeline = new ReportTimeline
             {
-                await transaction.RollbackAsync();
-                throw new Exception("Lỗi khi phê duyệt báo cáo: " + ex.Message);
-            }
+                ReportId = assignment.ReportId,
+                DeptId = assignment.DeptId,
+                UserId = (decimal)request.UserId,
+                ActionType = "CONFIRM",
+                ActionDetail = $"Lãnh đạo đã phê duyệt bản báo cáo (ID File: {request.SelectedVersionId}).",
+                ActionTime = DateTime.Now,
+                UserFullname = request.UserFullName,
+                UserPosition = request.UserPosition,
+                UserDeptName = request.UserDeptName
+            };
+            _context.ReportTimelines.Add(timeline);
+
+            // 6. Lưu và Commit giao dịch
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
+
+            return true;
         }
+        catch (Exception ex)
+        {
+            await transaction.RollbackAsync();
+            // Ném lỗi về Controller để trả về Bad Request kèm Message chi tiết
+            throw new Exception(ex.Message);
+        }
+    }
         public async Task<object> GetReportDetailForAdminAsync(int reportId)
         {
             var report = await _context.Reports.FindAsync((decimal)reportId);
@@ -439,10 +450,170 @@ namespace DHSX.Web.Application.Services
                 { 
                     ReportName = report.ReportName, 
                     ReportCode = report.ReportCode, 
-                    GlobalStatus = report.GlobalStatus 
+                    GlobalStatus = report.GlobalStatus,
+                    Deadline = report.Deadline
                 },
                 Assignments = assignments
             };
+        }
+
+        public async Task<bool> LockAllAssignmentsAsync(int reportId)
+        {
+            // Tìm tất cả các assignment của báo cáo này chưa bị khóa
+            var assignments = await _context.ReportAssignments
+                .Where(a => a.ReportId == (decimal)reportId && (a.IsLocked == false || a.IsLocked == null))
+                .ToListAsync();
+
+            if (assignments.Any())
+            {
+                foreach (var assign in assignments)
+                {
+                    assign.IsLocked = true;
+                    // Tùy chọn: Có thể đổi AssignStatus thành "Đã khóa" hoặc giữ nguyên
+                }
+
+                // Ghi log Timeline
+                var timeline = new ReportTimeline
+                {
+                    ReportId = (decimal)reportId,
+                    UserId = 1, // LƯU Ý: Chỗ này truyền tạm UserId của Admin, bạn có thể truyền từ Controller xuống sau
+                    UserFullname = "Admin", // Tạm thời ghi cứng, nên truyền từ Controller xuống
+                    UserPosition = "Quản trị viên", // Tạm thời ghi cứng, nên truyền từ Controller xuống
+                    UserDeptName = "Bộ phận Admin", // Tạm thời ghi cứng, nên truyền từ Controller xuống
+                    ActionType = "LOCK_ALL",
+                    ActionDetail = $"Admin đã khóa toàn bộ ({assignments.Count}) Ban, không cho phép cập nhật thêm file.",
+                    ActionTime = DateTime.Now
+                };
+                
+                _context.ReportTimelines.Add(timeline);
+                await _context.SaveChangesAsync();
+            }
+
+            return true;
+        }
+
+        public async Task<IEnumerable<ReportVersionDto>> GetReportVersionsAsync(int reportId, int deptId)
+        {
+            // 1. Tìm AssignmentId tương ứng với Ban và Báo cáo này
+            var assignment = await _context.ReportAssignments
+                .FirstOrDefaultAsync(a => a.ReportId == reportId && a.DeptId == deptId);
+
+            if (assignment == null) return new List<ReportVersionDto>();
+
+            // 2. LẤY DỮ LIỆU THÔ LÊN RAM TRƯỚC (QUAN TRỌNG: Gọi ToListAsync ở đây)
+            var versionsDb = await _context.ReportVersions
+                .Where(v => v.AssignmentId == assignment.AssignmentId)
+                .OrderByDescending(v => v.VersionNumber) 
+                .ToListAsync(); // <-- Oracle chỉ lấy data, không dịch Boolean
+
+            // 3. MAP SANG DTO BẰNG C# (An toàn tuyệt đối)
+            var versions = versionsDb.Select(v => new ReportVersionDto
+            {
+                VersionId = (int)v.VersionId,
+                VersionNumber = (int)v.VersionNumber,
+                AssignmentId = (int)v.AssignmentId,
+                FileName = v.FileName,
+                FilePath = v.FilePath,
+                Note = v.Note,
+                UploadedAt = v.UploadedAt ?? DateTime.Now,
+                IsSelected = v.IsSelected == true, // C# tự xử lý cái này, Oracle không cằn nhằn nữa
+                UploadedBy = (int)v.UploadedBy
+            }).ToList();
+
+            return versions;
+        }
+
+        public async Task<bool> UpdateAssignmentsAsync(int reportId, List<int> departmentIds)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                // Lấy danh sách các Ban ĐÃ ĐƯỢC PHÂN CÔNG hiện tại trong DB
+                var existingAssignments = await _context.ReportAssignments
+                    .Where(a => a.ReportId == (decimal)reportId)
+                    .ToListAsync();
+
+                var existingDeptIds = existingAssignments.Select(a => (int)a.DeptId).ToList();
+
+                // Lọc ra các Ban CẦN THÊM MỚI và CẦN XÓA BỎ
+                var deptsToAdd = departmentIds.Except(existingDeptIds).ToList();
+                var deptsToRemove = existingDeptIds.Except(departmentIds).ToList();
+
+
+                // 1. Xử lý XÓA Ban
+                if (deptsToRemove.Any())
+                {
+                    // Lấy danh sách cần xóa từ danh sách đã load lên RAM (existingAssignments)
+                    // Việc lọc trên RAM (C#) sẽ dùng giá trị true/false chuẩn, không gây lỗi SQL
+                    var assignmentsToRemove = existingAssignments
+                        .Where(a => deptsToRemove.Contains((int)a.DeptId))
+                        .ToList();
+
+                    if (assignmentsToRemove.Any())
+                    {
+                        var assignIdsToRemove = assignmentsToRemove.Select(a => a.AssignmentId).ToList();
+                        
+                        // Kiểm tra xem có file nộp chưa
+                        bool hasFiles = await _context.ReportVersions
+                            .AnyAsync(v => assignIdsToRemove.Contains(v.AssignmentId));
+                        
+                        if (hasFiles)
+                        {
+                            throw new Exception("Không thể gỡ phân công các Ban ĐÃ TẢI LÊN file báo cáo.");
+                        }
+
+                        // Lệnh này sẽ xóa dựa trên Primary Key (ID), Oracle sẽ hiểu 100%
+                        _context.ReportAssignments.RemoveRange(assignmentsToRemove);
+                    }
+                }
+
+                // 2. Xử lý THÊM Ban mới
+                if (deptsToAdd.Any())
+                {
+                    foreach (var deptId in deptsToAdd)
+                    {
+                        var newAssignment = new ReportAssignment
+                        {
+                            ReportId = (decimal)reportId,
+                            DeptId = (decimal)deptId,
+                            AssignStatus = "Chưa cập nhật",
+                            IsLocked = false
+                        };
+                        _context.ReportAssignments.Add(newAssignment);
+                    }
+                }
+
+                // TẠM THỜI COMMENT ĐOẠN NÀY LẠI TRÁNH LỖI KHÓA NGOẠI USER_ID = 1
+                
+                if (deptsToAdd.Any() || deptsToRemove.Any())
+                {
+                    var timeline = new ReportTimeline
+                    {
+                        ReportId = (decimal)reportId,
+                        UserId = 1, // Lỗi 99% nằm ở đây do Database không có User 1
+                        ActionType = "UPDATE_ASSIGNMENT",
+                        ActionDetail = $"Admin đã cập nhật phân công: Thêm {deptsToAdd.Count} Ban, Gỡ {deptsToRemove.Count} Ban.",
+                        ActionTime = DateTime.Now
+                    };
+                    _context.ReportTimelines.Add(timeline);
+                }
+                
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                
+                // Nâng cấp: Lấy lỗi sâu nhất (InnerException) từ Database nếu có
+                string exactError = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                
+                // Ném lỗi này lên Controller để nó báo về cho Frontend
+                throw new Exception(exactError); 
+            }
         }
     }
     

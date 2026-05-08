@@ -67,6 +67,7 @@ DTOs/
   DeptReportListDto.cs
   ReportListDto.cs
   ReportTimelineDto.cs
+  ReportVersionDto.cs
   UnlockAssignmentDto.cs
  UploadReportFileDto.cs
 Interfaces/

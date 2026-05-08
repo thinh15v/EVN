@@ -10,16 +10,16 @@ import { RoleProvider } from '@/context/RoleContext';
 export default function App({ Component, pageProps }: AppProps) {
   const themeConfig = useMemo(() => ({
     token: {
-      colorPrimary: "#00529C", // Màu xanh chuẩn EVN
+      colorPrimary: "#00529C",
       borderRadius: 8,
       colorBgContainer: "#ffffff",
     },
     components: {
       Layout: {
-        headerBg: "#00529C",
+        headerBg: "#ffffff", // Màu Header trắng đồng bộ thiết kế
       },
       Table: {
-        headerBg: "#f8fafc", // Nên để nền sáng cho header table để nổi bật text
+        headerBg: "#f8fafc",
         headerColor: "#475569",
         headerFontWeight: 700,
       }
@@ -28,16 +28,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ConfigProvider locale={locale} theme={themeConfig}>
-      {/* 
-        BƯỚC QUAN TRỌNG: 
-        RoleProvider phải bọc ngoài cùng (hoặc ngay dưới ConfigProvider)
-        để cả Layout và Component bên trong đều dùng chung một "kho" dữ liệu.
-      */}
       <RoleProvider> 
         <Layout>
-          <div style={{ minHeight: '100vh', backgroundColor: '#f1f5f9' }}>
-            <Component {...pageProps} />
-          </div>
+          {/* QUAN TRỌNG: Xóa bỏ thẻ div bọc ngoài Component cũ */}
+          <Component {...pageProps} />
         </Layout>
       </RoleProvider>
     </ConfigProvider>

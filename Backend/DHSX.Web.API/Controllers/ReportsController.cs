@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace DHSX.Web.API.Controllers
 {
+
+    public class UpdateAssignmentsDto
+    {
+        public List<int> DepartmentIds { get; set; }
+    }
+
     [ApiController]
     [Route("api/[controller]")]
     public class ReportsController : ControllerBase
@@ -186,5 +192,48 @@ namespace DHSX.Web.API.Controllers
                 return StatusCode(500, new { success = false, message = "Lỗi khi lấy chi tiết: " + ex.Message });
             }
         }
+
+        [HttpPut("{id}/lock-all")]
+        public async Task<IActionResult> LockAllAssignments(int id)
+        {
+            try
+            {
+                await _reportService.LockAllAssignmentsAsync(id);
+                return Ok(new { success = true, message = "Đã khóa toàn bộ báo cáo thành công!" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Lỗi khi khóa toàn bộ: " + ex.Message });
+            }
+        }
+
+        [HttpGet("{reportId}/versions/{deptId}")]
+        public async Task<IActionResult> GetVersions(int reportId, int deptId)
+        {
+            var res = await _reportService.GetReportVersionsAsync(reportId, deptId);
+            return Ok(new { success = true, data = res });
+        }
+
+
+        [HttpPut("{id}/assignments")]
+        public async Task<IActionResult> UpdateAssignments(int id, [FromBody] UpdateAssignmentsDto request)
+        {
+            try
+            {
+                if (request.DepartmentIds == null || request.DepartmentIds.Count == 0)
+                {
+                    return BadRequest(new { success = false, message = "Phải chọn ít nhất 1 Ban để phân công." });
+                }
+
+                await _reportService.UpdateAssignmentsAsync(id, request.DepartmentIds);
+                
+                return Ok(new { success = true, message = "Cập nhật phân công thành công!" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Lỗi khi cập nhật phân công: " + ex.Message });
+            }
+        }
+        
     }
 }

@@ -34,7 +34,8 @@ builder.Services.AddHttpClient<IExternalDirectoryService, DHSX.Web.Infrastructur
 
 builder.Services.AddDbContext<OracleDbContext>(options =>
 {
-    options.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection"))
+    options.UseOracle(
+        builder.Configuration.GetConnectionString("DefaultConnection"))
            .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information)
            .EnableSensitiveDataLogging();
 });
