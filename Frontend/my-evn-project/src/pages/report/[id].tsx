@@ -46,8 +46,12 @@ export default function ReportDetail() {
       ]);
 
       if (detailRes.success) {
+        const reportData = detailRes.data.report || detailRes.data.Report;
         setReportInfo(detailRes.data.report || detailRes.data.Report); 
         setAssignments(detailRes.data.assignments || detailRes.data.Assignments || []); 
+        const reportName = reportData?.reportName || reportData?.ReportName || 'Chi tiết Báo cáo';
+        localStorage.setItem('currentReportName', reportName);
+        window.dispatchEvent(new Event('updateReportTitle'));
       }
       if (finalFilesRes.success) {
         setFinalFiles(finalFilesRes.data || []);

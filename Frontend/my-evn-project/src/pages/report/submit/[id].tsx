@@ -16,8 +16,17 @@ export default function SubmitReport() {
   const router = useRouter();
   const { id } = router.query;
 
+  // 1. SỬA LẠI KHÚC LẤY USER: Thêm typeof window để chống lỗi Crash Next.js (SSR)
+  const userStr = typeof window !== 'undefined' ? localStorage.getItem("currentUser") : null;
+  const currentUser = userStr ? JSON.parse(userStr) : {};
+
+  // Bao quát mọi trường hợp trả về từ C# (viết hoa/viết thường)
+  const currentUserId = currentUser.id || currentUser.userId || currentUser.Id || "1";
+  const currentUserName = currentUser.fullName || currentUser.FullName || currentUser.username || "Nhân viên";
+  const currentUserPosition = currentUser.position || currentUser.Position || currentUser.role || currentUser.Role || "Nhân viên";
+
   const [loading, setLoading] = useState(true);
-  const [loadingVersions, setLoadingVersions] = useState(false); // Thêm state riêng cho loading lịch sử
+  const [loadingVersions, setLoadingVersions] = useState(false); 
   const [reportInfo, setReportInfo] = useState<any>(null);
   const [myAssignment, setMyAssignment] = useState<any>(null);
   const [versions, setVersions] = useState<any[]>([]);
@@ -35,10 +44,8 @@ export default function SubmitReport() {
   const fetchVersionsData = async (reportId: number, deptId: number) => {
     setLoadingVersions(true);
     try {
-      // 1. GỌI SERVICE MỚI ĐỂ LẤY RIÊNG DANH SÁCH VERSION
       const res = await ReportService.getReportVersions(reportId, deptId);
       if (res && res.success) {
-        // Đổ dữ liệu bảng REPORT_VERSIONS vào state
         setVersions(res.data || []);
       }
     } catch (error) {
@@ -48,20 +55,21 @@ export default function SubmitReport() {
     }
   };
 
-const fetchData = async () => {
+  const fetchData = async () => {
     setLoading(true);
     try {
       const res = await ReportService.getReportDetailForDept(Number(id));
       if (res && res.success && res.data) {
-        
-        // Chỉ lấy chữ thường theo đúng định nghĩa của Service
         const currentReport = res.data.report;
         const currentAssignment = res.data.assignment;
         
         setReportInfo(currentReport);
         setMyAssignment(currentAssignment);
+
+        const titleToDisplay = currentReport?.reportName || currentReport?.name || "";
+        localStorage.setItem('currentReportName', titleToDisplay);
+        window.dispatchEvent(new Event('updateReportTitle'));
         
-        // Gọi API lấy lịch sử phiên bản
         const currentDeptId = currentAssignment?.deptId || currentAssignment?.DeptId || 2;
         await fetchVersionsData(Number(id), currentDeptId);
       }
@@ -88,13 +96,14 @@ const fetchData = async () => {
     const formData = new FormData();
     const currentDeptId = myAssignment?.deptId || myAssignment?.DeptId || 2;
 
+    // 2. SỬA LẠI KHÚC GẮN FORM DATA: Dùng các biến động vừa lấy ở trên
     formData.append('File', fileToUpload); 
     formData.append('ReportId', String(id));
     formData.append('DeptId', String(currentDeptId));
-    formData.append('UserId', '2');
+    formData.append('UserId', String(currentUserId)); // Truyền ID thật
     formData.append('Note', note || "");
-    formData.append('UserFullName', 'NV. Trần Thị C');
-    formData.append('UserPosition', 'Nhân viên');
+    formData.append('UserFullName', currentUserName); // Truyền Tên thật
+    formData.append('UserPosition', currentUserPosition); // Truyền Chức vụ thật
     formData.append('UserDeptName', myAssignment?.deptName || myAssignment?.DeptName || "Ban Kỹ thuật");
 
     try {
@@ -104,7 +113,7 @@ const fetchData = async () => {
         setFileList([]);
         setNote('');
         
-        // 3. SAU KHI UPLOAD XONG, CHỈ CẦN RELOAD LẠI COMPONENT LỊCH SỬ CHO NHẸ
+        // Cập nhật lại danh sách lịch sử sau khi upload
         await fetchVersionsData(Number(id), currentDeptId);
       } else {
         message.error(res?.message || "Lỗi nộp file");
@@ -118,23 +127,19 @@ const fetchData = async () => {
 
   if (loading) return <div style={{ textAlign: 'center', padding: 100 }}><Spin size="large" /></div>;
 
-  // --- NÂNG CẤP BIẾN KHÓA (Bắt mọi trường hợp từ Backend) ---
-// --- NÂNG CẤP BIẾN KHÓA (Bắt mọi trường hợp) ---
   const statusText = myAssignment?.assignStatus || myAssignment?.AssignStatus || "";
   const globalStatusText = reportInfo?.globalStatus || reportInfo?.GlobalStatus || "";
   
-const isLocked = 
-  myAssignment?.isLocked === true || 
-  myAssignment?.IsLocked === true || 
-  myAssignment?.isLocked === 1 || 
-  myAssignment?.IsLocked === 1 || 
-  // Dòng quan trọng: Kiểm tra nếu Admin đã khóa toàn bộ đợt báo cáo
-  globalStatusText.toLowerCase().includes("khóa") || 
-  globalStatusText.toLowerCase().includes("hoàn thành") ||
-  statusText.toLowerCase().includes("khóa") ||      
-  statusText.toLowerCase().includes("xác nhận");
-  // Dòng này rất quan trọng để bạn tự check lỗi (Nhấn F12 sang tab Console để xem)
-  console.log("=== KIỂM TRA KHÓA ===", { isLocked, myAssignment, reportInfo });
+  const isLocked = 
+    myAssignment?.isLocked === true || 
+    myAssignment?.IsLocked === true || 
+    myAssignment?.isLocked === 1 || 
+    myAssignment?.IsLocked === 1 || 
+    globalStatusText.toLowerCase().includes("khóa") || 
+    globalStatusText.toLowerCase().includes("hoàn thành") ||
+    statusText.toLowerCase().includes("khóa") ||      
+    statusText.toLowerCase().includes("xác nhận");
+
   const deadlineValue = reportInfo?.deadline || reportInfo?.Deadline;
 
   return (
@@ -146,8 +151,7 @@ const isLocked =
           <Card style={{ borderRadius: 12, border: 'none', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
             <Row justify="space-between" align="middle" gutter={[16, 16]}>
               <Col flex="auto">
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <Button type="text" icon={<LeftOutlined />} onClick={() => router.push('/report')} style={{ backgroundColor: '#f1f5f9', borderRadius: '8px', width: 36, height: 36, marginTop: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#475569' }} />
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>  
                   <div>
                     <Title level={4} style={{ margin: 0, color: '#1e293b' }}>{reportInfo?.reportName || reportInfo?.name}</Title>
                     <Space style={{ marginTop: 6, color: '#64748b', fontSize: 13 }}>
@@ -172,10 +176,9 @@ const isLocked =
             style={{ borderRadius: 12, border: 'none', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
           >
             {isLocked ? (
-              // GIAO DIỆN KHI BỊ KHÓA
               <div style={{ 
-                backgroundColor: '#fffbeb', // Nền vàng nhạt
-                border: '1px solid #fde68a', // Viền vàng
+                backgroundColor: '#fffbeb', 
+                border: '1px solid #fde68a', 
                 borderRadius: 8, 
                 padding: '24px 20px', 
                 display: 'flex', 
@@ -193,7 +196,6 @@ const isLocked =
                 </div>
               </div>
             ) : (
-              // GIAO DIỆN KHI ĐANG MỞ (ĐƯỢC UPLOAD)
               <>
                 <div style={{ marginBottom: 20 }}>
                   <Text strong style={{ display: 'block', marginBottom: 12, color: '#334155' }}>Tệp tin báo cáo (Excel, Word, PDF...)</Text>

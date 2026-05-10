@@ -5,6 +5,7 @@ import {
   SafetyCertificateOutlined, 
   RightOutlined,
   UserOutlined,
+  LockOutlined,
   ClockCircleOutlined
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
@@ -34,7 +35,6 @@ export default function AuditLogModal({ isOpen, onClose, reportId, reportInfo, c
     setLoading(true);
     try {
       const res = await ReportService.getReportTimeline(reportId);
-      // ĐÃ SỬA: Lấy dữ liệu từ res.data.events theo đúng JSON bạn gửi
       if (res && res.success && res.data && Array.isArray(res.data.events)) {
         setTimelineData(res.data.events);
       } else {
@@ -50,80 +50,102 @@ export default function AuditLogModal({ isOpen, onClose, reportId, reportInfo, c
   const safeTimeline = Array.isArray(timelineData) ? timelineData : [];
   const safeAssignments = Array.isArray(currentAssignments) ? currentAssignments : [];
 
-  // 1. Nhóm các log theo Ban được phân công
+  // Logic nhóm log (Giữ nguyên logic của bạn nhưng tối ưu hóa hiển thị)
   const displayList = safeAssignments.map(assign => {
     const deptName = assign.deptName || assign.DeptName;
-    const logsOfDept = safeTimeline.filter(log => 
-      // ĐÃ SỬA: Kiểm tra trường 'deptName' (viết thường chữ cái đầu) từ JSON
-      (log.deptName || log.DeptName) === deptName
-    );
+    const logsOfDept = safeTimeline.filter(log => (log.deptName || log.DeptName) === deptName);
+    
+    // Xác định trạng thái của Ban dựa trên việc có nộp file hay chưa
+    const hasUpdated = logsOfDept.some(l => l.actionType === "UPLOAD" || l.actionType === "CONFIRM");
 
     return {
       deptName,
-      status: assign.isLocked || assign.IsLocked ? 'LOCKED' : 'PENDING',
+      status: assign.isLocked || assign.IsLocked ? 'LOCKED' : (hasUpdated ? 'UPDATED' : 'EMPTY'),
       logs: logsOfDept,
       lastUpdate: logsOfDept.length > 0 ? logsOfDept[0].actionTime : null
     };
   });
 
-  // 2. Nhóm Log của Admin (Những log có deptName là "Ban Giám Đốc" hoặc null)
   const adminLogs = safeTimeline.filter(log => {
     const logDept = log.deptName || log.DeptName;
     return !logDept || logDept === "Ban Giám Đốc" || !safeAssignments.some(a => (a.deptName || a.DeptName) === logDept);
   });
   
-  // Chỉ thêm nhóm Admin vào danh sách hiển thị nếu có log
-  const finalDisplay = [...displayList];
+  const finalDisplay = [];
   if (adminLogs.length > 0) {
-    finalDisplay.unshift({
+    finalDisplay.push({
       deptName: "Hệ thống & Ban Quản trị",
       status: 'ADMIN',
       logs: adminLogs,
       lastUpdate: adminLogs[0].actionTime
     });
   }
+  finalDisplay.push(...displayList);
 
   const collapseItems = finalDisplay.map((item, index) => ({
     key: index.toString(),
     label: (
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-        <Space orientation="vertical" size={0}>
+        <Space orientation="vertical" size={2}>
           <Space>
-            {item.status === 'ADMIN' && <SafetyCertificateOutlined style={{ color: '#2563eb' }} />}
-            <Text strong style={{ fontSize: 15 }}>{item.deptName}</Text>
-            {item.status === 'LOCKED' && <Tag color="success">ĐÃ XÁC NHẬN</Tag>}
+            {item.status === 'ADMIN' ? (
+                <SafetyCertificateOutlined style={{ color: '#2563eb', fontSize: 18 }} />
+            ) : (
+                <RightOutlined style={{ fontSize: 12, color: '#64748b' }} />
+            )}
+            <Text strong style={{ fontSize: 15, color: '#1e293b' }}>{item.deptName}</Text>
+            
+            {/* Tag trạng thái giống ảnh mẫu */}
+            {item.status === 'LOCKED' && <Tag color="success" style={{borderRadius: 4}}>ĐÃ XÁC NHẬN</Tag>}
+            {item.status === 'UPDATED' && <Tag color="blue" style={{borderRadius: 4}}>ĐÃ CẬP NHẬT</Tag>}
+            {item.status === 'EMPTY' && <Tag color="error" style={{borderRadius: 4}}>CHƯA CẬP NHẬT</Tag>}
           </Space>
           {item.lastUpdate && (
-            <Text type="secondary" style={{ fontSize: 12 }}>
-              Thao tác lần cuối: {dayjs(item.lastUpdate).format('HH:mm DD/MM/YYYY')}
+            <Text type="secondary" style={{ fontSize: 12, marginLeft: 22 }}>
+              <ClockCircleOutlined style={{marginRight: 4}}/>
+              Cập nhật lần cuối: {dayjs(item.lastUpdate).format('HH:mm DD/MM/YYYY')}
             </Text>
           )}
         </Space>
-        <Tag color={item.logs.length > 0 ? "blue" : "default"} style={{ borderRadius: 10 }}>
-          {item.logs.length} thao tác
-        </Tag>
+        <div style={{ backgroundColor: '#f1f5f9', padding: '2px 12px', borderRadius: 12 }}>
+            <Text strong style={{ fontSize: 13, color: '#475569' }}>{item.logs.length} thao tác</Text>
+        </div>
       </div>
     ),
     children: item.logs.length > 0 ? (
-      <div style={{ paddingLeft: 10 }}>
+      <div style={{ padding: '10px 10px 0 24px' }}>
         <Timeline
           items={item.logs.map((log: any) => ({
+            color: log.actionType === 'CONFIRM' ? 'green' : 'blue',
             children: (
-              <div style={{ marginBottom: 8 }}>
-                <Text strong style={{ display: 'block' }}>{log.actionDetail}</Text>
-                <Space style={{ fontSize: 12, color: '#64748b' }}>
-                  <UserOutlined />
-                  <span>{log.fullName || "Hệ thống"} {log.position ? `(${log.position})` : ''}</span>
-                </Space>
+              <div style={{ marginBottom: 4 }}>
+                <Text strong style={{ color: '#334155' }}>{log.actionDetail}</Text>
+                <div style={{ fontSize: 12, color: '#94a3b8', marginTop: 2 }}>
+                  <UserOutlined style={{marginRight: 4}} />
+                  {log.userFullname || log.UserFullname || "Hệ thống"} - {log.userPosition || "NV"}
+                </div>
               </div>
             )
           }))}
         />
       </div>
     ) : (
-      <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Chưa có dữ liệu thao tác" />
-    )
+      <div style={{ padding: '10px 24px', color: '#94a3b8', fontStyle: 'italic' }}>
+        Chưa có thao tác nào.
+      </div>
+    ),
+    // Tùy chỉnh Style từng Panel để nó giống "thẻ" (Card) trong ảnh mẫu
+    style: {
+        backgroundColor: '#fff',
+        marginBottom: 12,
+        borderRadius: 12,
+        border: '1px solid #e2e8f0',
+        overflow: 'hidden'
+    }
   }));
+
+  // Kiểm tra nếu báo cáo bị khóa toàn bộ
+  const isGlobalLocked = reportInfo?.globalStatus?.toLowerCase().includes("khóa") || reportInfo?.GlobalStatus?.toLowerCase().includes("hoàn thành");
 
   return (
     <Modal
@@ -131,30 +153,51 @@ export default function AuditLogModal({ isOpen, onClose, reportId, reportInfo, c
       open={isOpen}
       onCancel={onClose}
       footer={null}
-      width={750}
+      width={700}
       centered
-      styles={{ body: { padding: 0, backgroundColor: '#f8fafc', borderRadius: 12, overflow: 'hidden' } }}
+      styles={{ body: { padding: 0, backgroundColor: '#f1f5f9' } }} // Nền xám nhạt cho modal
     >
-      <div style={{ display: 'flex', alignItems: 'center', padding: '16px 24px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#fff' }}>
-        <Space style={{ color: '#2563eb' }}>
-          <HistoryOutlined style={{ fontSize: 20 }} />
-          <span style={{ fontSize: 16, fontWeight: 700 }}>Lịch sử toàn hệ thống (Audit Log)</span>
+      {/* Header Modal */}
+      <div style={{ padding: '16px 24px', backgroundColor: '#fff', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between' }}>
+        <Space>
+          <HistoryOutlined style={{ fontSize: 18, color: '#2563eb' }} />
+          <Text strong style={{ fontSize: 16 }}>Lịch sử toàn hệ thống (Audit Log)</Text>
         </Space>
+        <Text type="secondary" style={{cursor: 'pointer'}} onClick={onClose}>✕</Text>
       </div>
 
-      <div style={{ padding: '24px' }}>
-        <div style={{ textAlign: 'center', padding: '20px', backgroundColor: '#fff', borderRadius: '12px', border: '1px solid #e2e8f0', marginBottom: '20px' }}>
-          <Title level={4} style={{ margin: 0 }}>{reportInfo?.reportName || reportInfo?.name}</Title>
-          <Text type="secondary">Mã: {reportInfo?.reportCode || reportInfo?.id}</Text>
+      <div style={{ padding: '20px' }}>
+        {/* Banner thông tin báo cáo - Dải màu đỏ ở trên */}
+        <div style={{ 
+            backgroundColor: '#fff', 
+            borderRadius: 12, 
+            borderTop: '4px solid #ef4444', // Dải màu đỏ
+            padding: '20px', 
+            textAlign: 'center',
+            boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
+            marginBottom: 20
+        }}>
+          <Title level={4} style={{ margin: '0 0 4px 0' }}>{reportInfo?.reportName || "Tên báo cáo"}</Title>
+          <Text type="secondary">Mã: {reportInfo?.reportCode || "N/A"} • Phân loại: EVN</Text>
+          {isGlobalLocked && (
+              <div style={{ marginTop: 8, color: '#ef4444', fontSize: 13, fontWeight: 500 }}>
+                  <LockOutlined style={{marginRight: 4}}/> Đợt báo cáo này đã bị Admin khóa
+              </div>
+          )}
         </div>
 
         <Spin spinning={loading}>
-          <Collapse
-            accordion
-            items={collapseItems}
-            expandIcon={({ isActive }) => <RightOutlined rotate={isActive ? 90 : 0} />}
-            style={{ backgroundColor: 'transparent', border: 'none' }}
-          />
+          {finalDisplay.length > 0 ? (
+            <Collapse
+              ghost
+              accordion
+              items={collapseItems}
+              expandIcon={() => null} // Ẩn icon mặc định vì mình đã tùy chỉnh trong label
+              style={{ padding: 0 }}
+            />
+          ) : (
+            <Empty description="Không có dữ liệu lịch sử" />
+          )}
         </Spin>
       </div>
     </Modal>

@@ -35,7 +35,7 @@ export default function VersionHistoryCard({ versions, deptName, loading = false
               // Bắt đủ các trường hợp viết hoa/thường
               const versionNum = v.version || v.Version || v.versionNumber || v.VersionNumber;
               const fName = v.fileName || v.FileName;
-              const uName = v.uploadedByFullName || v.UploadedByFullName || 'NV. Trần Thị C';
+              const uName = v.uploadedByFullName || v.UploadedByFullName || v.userFullName || v.UserFullName || 'NV. Nguyễn Văn B'; // Ko có bảng user nên tạm lấy tên giả
               const uTime = v.uploadedAt || v.UploadedAt;
               const nText = v.notes || v.Notes || v.note || v.Note;
 

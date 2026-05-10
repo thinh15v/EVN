@@ -18,6 +18,13 @@ export default function ApproveReport() {
   // Sử dụng messageApi để tránh lỗi "Static function can not consume context"
   const [messageApi, contextHolder] = message.useMessage();
 
+  const userStr = typeof window !== 'undefined' ? localStorage.getItem("currentUser") : null;
+  const currentUser = userStr ? JSON.parse(userStr) : {};
+
+  const currentUserId = currentUser.id || currentUser.userId || currentUser.Id ;
+  const currentUserName = currentUser.fullName || currentUser.FullName ;
+  const currentUserPosition = currentUser.position || currentUser.Position || currentUser.role ;
+
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   
@@ -44,6 +51,10 @@ export default function ApproveReport() {
         setReportInfo(currentReport);
         setMyAssignment(currentAssignment);
         
+        const titleToDisplay = currentReport?.reportName || currentReport?.name || "";
+        localStorage.setItem('currentReportName', titleToDisplay);
+        window.dispatchEvent(new Event('updateReportTitle'));
+        
         const deptId = currentAssignment?.deptId || currentAssignment?.DeptId || 2;
         const versionRes = await ReportService.getReportVersions(Number(id), deptId);
         
@@ -67,15 +78,25 @@ export default function ApproveReport() {
   const statusText = myAssignment?.assignStatus || myAssignment?.AssignStatus || "";
   const globalStatus = reportInfo?.globalStatus || reportInfo?.GlobalStatus || "";
   
-  const isLocked = 
-    myAssignment?.isLocked === true || 
-    myAssignment?.IsLocked === true || 
-    myAssignment?.isLocked === 1 || 
-    myAssignment?.IsLocked === 1 ||
-    globalStatus.toLowerCase().includes("khóa") || 
-    globalStatus.toLowerCase().includes("hoàn thành") ||
-    statusText.toLowerCase().includes("khóa") ||
-    statusText.toLowerCase().includes("xác nhận");
+  // --- LOGIC KIỂM TRA KHÓA TRỰC TIẾP TỪ DATA DATABASE ---
+  const isLocked = React.useMemo(() => {
+    if (!myAssignment || !reportInfo) return false;
+
+    // Ưu tiên kiểm tra cột IsLocked từ bảng Assignment trong DB
+    const isAssignLocked = myAssignment.isLocked === true || myAssignment.IsLocked === true || myAssignment.isLocked === 1;
+    
+    // Kiểm tra trạng thái chữ (đề phòng dữ liệu DB chỉ cập nhật text)
+    const statusText = (myAssignment.assignStatus || myAssignment.AssignStatus || "").toLowerCase();
+    const globalStatusText = (reportInfo.globalStatus || reportInfo.GlobalStatus || "").toLowerCase();
+
+    return (
+      isAssignLocked || 
+      globalStatusText.includes("khóa") || 
+      globalStatusText.includes("hoàn thành") ||
+      statusText.includes("khóa") ||
+      statusText.includes("xác nhận")
+    );
+  }, [myAssignment, reportInfo]); // Theo dõi sự thay đổi của data từ DB
 
   const handleApprove = async () => {
     if (!selectedVersionId) {
@@ -85,33 +106,30 @@ export default function ApproveReport() {
 
     setSubmitting(true);
     try {
-      // Tìm đối tượng version để lấy AssignmentId chính xác từ file (phòng trường hợp lệch data)
       const selectedVerObj = versions.find(v => (v.versionId || v.VersionId) === selectedVersionId);
       const finalAssignmentId = selectedVerObj?.assignmentId || selectedVerObj?.AssignmentId || myAssignment?.assignmentId || myAssignment?.AssignmentId;
       
       const payload = {
-            // Ép kiểu chắc chắn về Number
             AssignmentId: Number(finalAssignmentId),
             SelectedVersionId: Number(selectedVersionId),
-            UserId: 3,
-            UserFullName: "Lãnh đạo Ban Kỹ Thuật",
-            UserPosition: "Trưởng Ban",
-            UserDeptName: myAssignment?.deptName || "Ban Kỹ thuật"
+            UserId: Number(currentUserId),
+            UserFullName: currentUserName,
+            UserPosition: currentUserPosition,
+            UserDeptName: myAssignment?.deptName || myAssignment?.DeptName 
         };
-
-      console.log("Payload gửi đi:", payload);
 
       const res = await ReportService.approveReport(payload);
       
       if (res && res.success) {
         messageApi.success("Khóa và chốt số liệu thành công!");
-        // Chờ 1 chút để người dùng thấy thông báo trước khi chuyển trang
-        setTimeout(() => router.push('/report'), 1000); 
+        
+        // --- QUAN TRỌNG: Cập nhật lại data từ Database thay vì chuyển trang ngay ---
+        await fetchData(); 
+        
       } else {
         messageApi.error(res?.message || "Lỗi phê duyệt báo cáo.");
       }
     } catch (error: any) {
-      console.error("Chi tiết lỗi 400 từ Server:", error.response?.data);
       messageApi.error("Dữ liệu không hợp lệ hoặc lỗi Server.");
     } finally {
       setSubmitting(false);
@@ -122,7 +140,6 @@ export default function ApproveReport() {
 
   return (
     <>
-      {/* ContextHolder bắt buộc phải có để hiển thị thông báo messageApi */}
       {contextHolder}
 
       <div style={{ backgroundColor: '#f4f7f9', minHeight: '100vh', padding: '40px 0' }}>
@@ -143,31 +160,36 @@ export default function ApproveReport() {
                   </Space>
                 </Col>
                 <Col>
-                  <Tag color={isLocked ? "error" : "blue"} style={{ borderRadius: 6, fontWeight: 700, padding: '4px 12px' }}>
-                    {isLocked ? "ĐÃ KHÓA" : (statusText.toUpperCase() || 'ĐANG THỰC HIỆN')}
+                  {/* TAG TRẠNG THÁI GÓC PHẢI */}
+                  <Tag color={isLocked ? "success" : "blue"} style={{ borderRadius: 6, fontWeight: 700, padding: '4px 12px' }}>
+                    {isLocked ? "ĐÃ XÁC NHẬN" : (statusText.toUpperCase() || 'ĐANG THỰC HIỆN')}
                   </Tag>
                 </Col>
               </Row>
 
-              {/* Hướng dẫn */}
+              {/* Hướng dẫn hoặc Thông báo đã khóa */}
               <Alert
-                title={<Text strong style={{ color: isLocked ? '#92400e' : '#1e40af' }}>{isLocked ? "Đợt báo cáo đã kết thúc" : "Hướng dẫn phê duyệt:"}</Text>}
+                message={
+                  <Text strong style={{ color: isLocked ? '#166534' : '#1e40af' }}>
+                    {isLocked ? "Ban đã chốt số liệu thành công" : "Hướng dẫn phê duyệt:"}
+                  </Text>
+                }
                 description={
                   isLocked ? (
-                    <Text style={{ color: '#92400e' }}>Báo cáo này đã được xác nhận và khóa. Bạn không thể thay đổi dữ liệu đã chốt.</Text>
+                    <Text style={{ color: '#166534' }}>Báo cáo giao ban ĐHSX tháng 5/2026</Text>
                   ) : (
                     <ul style={{ margin: 0, paddingLeft: 20, color: '#1e3a8a', fontSize: 13 }}>
-                      <li>Chọn một bản cập nhật của nhân viên để duyệt làm bản Final.</li>
-                      <li>Dữ liệu sẽ được khóa ngay sau khi bạn nhấn xác nhận.</li>
+                      <li>Chọn một hoặc nhiều bản cập nhật của nhân viên để duyệt làm bản Final.</li>
+                      <li>Bạn cũng có thể đính kèm thêm file của riêng mình (VD: Bản scan có chữ ký, file chốt cuối).</li>
                     </ul>
                   )
                 }
-                type={isLocked ? "warning" : "info"}
+                type={isLocked ? "success" : "info"}
                 showIcon
-                style={{ borderRadius: 8 }}
+                style={{ borderRadius: 8, border: isLocked ? '1px solid #bbf7d0' : '1px solid #bfdbfe' }}
               />
 
-              {/* Phần 1: Chọn file của nhân viên */}
+              {/* Phần 1: Danh sách file nhân viên */}
               <div>
                 <Space style={{ marginBottom: 16 }}>
                   <FileTextOutlined style={{ color: '#64748b' }} />
@@ -181,32 +203,23 @@ export default function ApproveReport() {
                 />
               </div>
 
-              {/* Phần 2: Upload file của Lãnh đạo */}
-              {!isLocked && (
-                <div>
-                  <Space style={{ marginBottom: 16 }}>
-                    <UploadOutlined style={{ color: '#64748b' }} />
-                    <Text strong style={{ fontSize: 15, color: '#334155' }}>2. TẢI LÊN THÊM FILE BỔ SUNG (TÙY CHỌN)</Text>
-                  </Space>
-                  
-                  <div style={{ display: 'flex', gap: 12, alignItems: 'center', backgroundColor: '#f8fafc', padding: 16, borderRadius: 8, border: '1px solid #e2e8f0' }}>
-                    <Button>Choose File</Button>
-                    <Text type="secondary" style={{ flex: 1 }}>Chưa chọn file nào</Text>
-                    <Input placeholder="Ghi chú file..." style={{ width: 250 }} />
-                    <Button type="primary" style={{ backgroundColor: '#1e293b' }} icon={<UploadOutlined />}>Thêm file</Button>
-                  </div>
-                </div>
-              )}
-
-              {/* Nút Action */}
+              {/* Nút Action / Thông báo hoàn thành ở dưới cùng */}
               <Row justify="end" style={{ marginTop: 10 }}>
                 {isLocked ? (
+                  /* GIAO DIỆN KHI ĐÃ CHỐT GIỐNG TRONG ẢNH */
                   <div style={{ 
-                    backgroundColor: '#fffbeb', border: '1px solid #fde68a', 
-                    padding: '12px 24px', borderRadius: 8, display: 'flex', gap: 12, alignItems: 'center' 
+                    backgroundColor: '#dcfce7', 
+                    border: '1px solid #bbf7d0', 
+                    padding: '12px 32px', 
+                    borderRadius: 8, 
+                    display: 'flex', 
+                    gap: 12, 
+                    alignItems: 'center' 
                   }}>
-                    <LockOutlined style={{ color: '#d97706', fontSize: 18 }} />
-                    <Text strong style={{ color: '#d97706' }}>Hệ thống đã đóng đợt báo cáo này</Text>
+                    <CheckCircleOutlined style={{ color: '#16a34a', fontSize: 20 }} />
+                    <Text strong style={{ color: '#15803d', fontSize: 16 }}>
+                      Ban đã chốt số liệu thành công
+                    </Text>
                   </div>
                 ) : (
                   <Button 

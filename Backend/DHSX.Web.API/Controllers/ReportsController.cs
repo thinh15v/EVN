@@ -178,7 +178,7 @@ namespace DHSX.Web.API.Controllers
                 return BadRequest(new { success = false, message = ex.Message });
             }
         }
-
+// api mới
         [HttpGet("{id}/detail")]
         public async Task<IActionResult> GetReportDetail(int id)
         {

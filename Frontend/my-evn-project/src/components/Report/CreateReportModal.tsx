@@ -1,17 +1,19 @@
 import React from 'react';
 import { Modal, Form, Input, Select, DatePicker, Checkbox, Row, Col, Button, message } from 'antd';
 import { ReportService } from '@/services/ReportService';
+import Cookies from "js-cookie";
 
 interface Props {
   open: boolean;
   onCancel: () => void;
   onSuccess: () => void;
 }
-
+            
 export default function CreateReportModal({ open, onCancel, onSuccess }: Props) {
   const [form] = Form.useForm();
   
   const [messageApi, contextHolder] = message.useMessage();
+  
 
   const handleFinish = async (values: any) => {
     try {
@@ -20,7 +22,7 @@ export default function CreateReportModal({ open, onCancel, onSuccess }: Props) 
         reportType: values.reportType,
         deadline: values.deadline.format('YYYY-MM-DDTHH:mm:ss'),
         departmentIds: values.departmentIds,
-        createdByUserId: 1 // Gán tạm một ID giả lập 
+        CreatedByUserId: localStorage.getItem('currentUserId') 
       });
 
       if (result) {

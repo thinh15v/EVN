@@ -13,6 +13,14 @@ const { Text } = Typography;
 export default function ReportList() {
   const { role } = useRole(); 
   const router = useRouter();
+  // 1. Kiểm tra xem có đang ở môi trường trình duyệt (window) không
+  const userStr = typeof window !== 'undefined' ? localStorage.getItem("currentUser") : null;
+  
+  // 2. Nếu có dữ liệu thì parse, không thì gán rỗng
+  const currentUser = userStr ? JSON.parse(userStr) : {};
+  
+  // 3. Lấy ID an toàn bằng dấu ?. để tránh lỗi khi currentUser rỗng trên server
+  const departmentId = currentUser?.department?.deptId || currentUser?.deptId || currentUser?.departmentId;
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +41,7 @@ export default function ReportList() {
       if (role === 'admin') {
         result = await ReportService.getReports();
       } else {
-        result = await ReportService.getReportsByDept(2);
+        result = await ReportService.getReportsByDept(departmentId);
       }
 
       if (result && result.success) {
@@ -160,7 +168,7 @@ export default function ReportList() {
             if (role === 'leader') {
               router.push({
                 pathname: config.url,
-                query: { deptId: 2 }
+                query: { deptId: departmentId  }
               });
             } else {
               // Đối với Staff và Admin
