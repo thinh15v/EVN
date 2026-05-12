@@ -40,8 +40,8 @@ D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\DHSX.Web.Domain.GeneratedMSBuil
 D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\DHSX.Web.Domain.AssemblyInfoInputs.cache
 D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\DHSX.Web.Domain.AssemblyInfo.cs
 D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\DHSX.Web.Domain.csproj.CoreCompileInputs.cache
+D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\DHSX.Web.Domain.sourcelink.json
 D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\DHSX.Web.Domain.dll
 D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\refint\DHSX.Web.Domain.dll
 D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\DHSX.Web.Domain.pdb
 D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\ref\DHSX.Web.Domain.dll
-D:\Task\Backend\DHSX.Web.Domain\obj\Debug\net9.0\DHSX.Web.Domain.sourcelink.json

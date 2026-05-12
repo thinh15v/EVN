@@ -70,8 +70,51 @@ namespace DHSX.Web.API.Controllers
         [HttpPost("{id}/final-files")]
         public async Task<IActionResult> UploadFinal(int id, IFormFile file)
         {
-            await _reportService.UploadFinalFileAsync(id, file);
-            return Ok(new { success = true, message = "Tải lên file tổng hợp thành công." });
+            try
+            {
+                Console.WriteLine($"[INFO] UploadFinal endpoint called: ReportId={id}");
+                Console.WriteLine($"[INFO] File info: FileName={file?.FileName}, FileLength={file?.Length}");
+                
+                // Xác thực file
+                if (file == null || file.Length == 0)
+                {
+                    Console.WriteLine($"[ERROR] File is null or empty!");
+                    return BadRequest(new { success = false, message = "Tệp không hợp lệ. Vui lòng chọn một tệp." });
+                }
+
+                // Kiểm tra kích thước file (giới hạn 50MB)
+                long maxFileSize = 50 * 1024 * 1024; // 50MB
+                if (file.Length > maxFileSize)
+                {
+                    Console.WriteLine($"[ERROR] File size {file.Length} exceeds max {maxFileSize}!");
+                    return BadRequest(new { success = false, message = "Kích thước tệp vượt quá 50MB." });
+                }
+
+                // Kiểm tra loại file được phép
+                var allowedExtensions = new[] { ".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".txt", ".csv" };
+                var fileExtension = Path.GetExtension(file.FileName).ToLower();
+                if (!allowedExtensions.Contains(fileExtension))
+                {
+                    Console.WriteLine($"[ERROR] File extension {fileExtension} not allowed!");
+                    return BadRequest(new { success = false, message = $"Định dạng tệp '{fileExtension}' không được phép. Các định dạng cho phép: {string.Join(", ", allowedExtensions)}" });
+                }
+
+                Console.WriteLine($"[INFO] File validation passed. Starting upload...");
+                await _reportService.UploadFinalFileAsync(id, file);
+                Console.WriteLine($"[INFO] File uploaded successfully!");
+                
+                return Ok(new { success = true, message = "Tải lên file tổng hợp thành công." });
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"[ERROR] ArgumentException: {ex.Message}");
+                return BadRequest(new { success = false, message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] Upload file final: {ex.Message}\n{ex.StackTrace}");
+                return StatusCode(500, new { success = false, message = $"Lỗi khi tải lên tệp: {ex.Message}" });
+            }
         }
 
         // 3. Lấy danh sách file tổng hợp để Admin xem/xóa
@@ -166,16 +209,48 @@ namespace DHSX.Web.API.Controllers
         {
             try
             {
-                if (request.File == null || request.File.Length == 0)
-                    return BadRequest(new { success = false, message = "Vui lòng đính kèm file báo cáo." });
+                Console.WriteLine($"[INFO] UploadReportFile endpoint called: ReportId={request.ReportId}, DeptId={request.DeptId}");
+                Console.WriteLine($"[INFO] File info: FileName={request.File?.FileName}, FileLength={request.File?.Length}");
 
+                // Xác thực file
+                if (request.File == null || request.File.Length == 0)
+                {
+                    Console.WriteLine($"[ERROR] File is null or empty!");
+                    return BadRequest(new { success = false, message = "Vui lòng đính kèm file báo cáo." });
+                }
+
+                // Kiểm tra kích thước file (giới hạn 50MB)
+                long maxFileSize = 50 * 1024 * 1024; // 50MB
+                if (request.File.Length > maxFileSize)
+                {
+                    Console.WriteLine($"[ERROR] File size {request.File.Length} exceeds max {maxFileSize}!");
+                    return BadRequest(new { success = false, message = "Kích thước tệp vượt quá 50MB." });
+                }
+
+                // Kiểm tra loại file được phép
+                var allowedExtensions = new[] { ".pdf", ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".txt", ".csv" };
+                var fileExtension = Path.GetExtension(request.File.FileName).ToLower();
+                if (!allowedExtensions.Contains(fileExtension))
+                {
+                    Console.WriteLine($"[ERROR] File extension {fileExtension} not allowed!");
+                    return BadRequest(new { success = false, message = $"Định dạng tệp '{fileExtension}' không được phép. Các định dạng cho phép: {string.Join(", ", allowedExtensions)}" });
+                }
+
+                Console.WriteLine($"[INFO] File validation passed. Starting upload...");
                 var result = await _reportService.UploadReportFileAsync(request);
+                Console.WriteLine($"[INFO] Report file uploaded successfully!");
 
                 return Ok(new { success = true, message = "Cập nhật file báo cáo thành công!" });
             }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"[ERROR] ArgumentException: {ex.Message}");
+                return BadRequest(new { success = false, message = ex.Message });
+            }
             catch (Exception ex)
             {
-                return BadRequest(new { success = false, message = ex.Message });
+                Console.WriteLine($"[ERROR] Upload report file: {ex.Message}\n{ex.StackTrace}");
+                return StatusCode(500, new { success = false, message = $"Lỗi khi tải lên tệp: {ex.Message}" });
             }
         }
 // api mới

@@ -45,26 +45,41 @@ namespace DHSX.Web.Application.Services
 
         public async Task<bool> UploadFinalFileAsync(int reportId, IFormFile file)
         {
-            // 1. Upload lên MinIO vào thư mục riêng của Admin
-            string folder = $"report_{reportId}/final_summaries";
-            string path = await _storageService.UploadFileAsync(file, folder);
+            if (file == null || file.Length == 0)
+                throw new ArgumentException("Tệp không hợp lệ.");
 
-            // 2. Lưu vào bảng REPORT_FINAL_FILES
-            var finalFile = new ReportFinalFile
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
             {
-                ReportId = (decimal)reportId,
-                FileName = file.FileName,
-                FilePath = path,
-                UploadedAt = DateTime.Now
-            };
+                // 1. Upload lên MinIO vào thư mục riêng của Admin
+                string folder = $"report_{reportId}/final_summaries";
+                Console.WriteLine($"[INFO] Uploading final file for report {reportId} to folder: {folder}");
+                
+                string path = await _storageService.UploadFileAsync(file, folder);
+                Console.WriteLine($"[INFO] File uploaded successfully to MinIO: {path}");
 
-            _context.ReportFinalFiles.Add(finalFile);
+                // 2. Lưu vào bảng REPORT_FINAL_FILES
+                var finalFile = new ReportFinalFile
+                {
+                    ReportId = (decimal)reportId,
+                    FileName = file.FileName,
+                    FilePath = path,
+                    UploadedAt = DateTime.Now
+                };
 
-            // 3. (Tùy chọn) Cập nhật trạng thái Global của Báo cáo thành "Hoàn tất" 
-            // nếu Admin đã bắt đầu upload file tổng hợp.
-
-            await _context.SaveChangesAsync();
-            return true;
+                _context.ReportFinalFiles.Add(finalFile);
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
+                
+                Console.WriteLine($"[INFO] Final file record saved to database successfully.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                Console.WriteLine($"[ERROR] Failed to upload final file: {ex.Message}\n{ex.StackTrace}");
+                throw new Exception($"Lỗi khi tải lên file tổng hợp: {ex.Message}", ex);
+            }
         }
 
         public async Task<bool> DeleteFinalFileAsync(int fileId)
@@ -209,7 +224,10 @@ namespace DHSX.Web.Application.Services
             {
                 // 2. Upload file lên MinIO
                 string folderPrefix = $"report_{request.ReportId}/dept_{request.DeptId}";
+                Console.WriteLine($"[INFO] Uploading report file: ReportId={request.ReportId}, DeptId={request.DeptId}, FileName={request.File.FileName}");
+                
                 string savedFilePath = await _storageService.UploadFileAsync(request.File, folderPrefix);
+                Console.WriteLine($"[INFO] Report file uploaded successfully: {savedFilePath}");
 
                 // 3. Tính toán Version Number (Lần thứ mấy)
                 int currentVersionsCount = await _context.ReportVersions
@@ -251,12 +269,14 @@ namespace DHSX.Web.Application.Services
 
                 await _context.SaveChangesAsync();
                 await transaction.CommitAsync();
+                Console.WriteLine($"[INFO] Report version saved successfully. VersionNumber={newVersionNumber}");
 
                 return true;
             }
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
+                Console.WriteLine($"[ERROR] Failed to upload report file: {ex.Message}\n{ex.StackTrace}");
                 throw new Exception("Lỗi hệ thống khi cập nhật file: " + ex.Message);
             }
         }

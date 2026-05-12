@@ -70,10 +70,10 @@ D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.AssemblyInfoInputs.cache
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.AssemblyInfo.cs
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.sourcelink.json
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.5F71057D.Up2Date
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.dll
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\refint\DHSX.Web.Infrastructure.dll
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.pdb
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.genruntimeconfig.cache
 D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\ref\DHSX.Web.Infrastructure.dll
-D:\Task\Backend\DHSX.Web.Infrastructure\obj\Debug\net9.0\DHSX.Web.Infrastructure.sourcelink.json

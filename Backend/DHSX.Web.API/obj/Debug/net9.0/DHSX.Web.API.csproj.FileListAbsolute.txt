@@ -490,6 +490,7 @@ D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.AssemblyInfo.cs
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.csproj.CoreCompileInputs.cache
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cs
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.MvcApplicationPartsAssemblyInfo.cache
+D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.sourcelink.json
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\rjimswa.dswa.cache.json
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -505,4 +506,3 @@ D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\refint\DHSX.Web.API.dll
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.pdb
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.genruntimeconfig.cache
 D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\ref\DHSX.Web.API.dll
-D:\Task\Backend\DHSX.Web.API\obj\Debug\net9.0\DHSX.Web.API.sourcelink.json
