@@ -409,7 +409,7 @@ namespace DHSX.Web.Application.Services
 
             // 1. Kéo dữ liệu thô từ Database lên RAM trước (Tránh lỗi dịch SQL của Oracle)
             var assignmentsDb = await _context.ReportAssignments
-                .Where(a => a.ReportId == reportId)
+                .Where(a => a.ReportId == reportId) 
                 .ToListAsync();
 
             var deptIds = assignmentsDb.Select(a => a.DeptId).Distinct().ToList();
@@ -428,7 +428,7 @@ namespace DHSX.Web.Application.Services
                 AssignmentId = a.AssignmentId,
                 DeptName = departments.FirstOrDefault(d => d.DeptId == a.DeptId)?.DeptName ?? "Không rõ",
                 AssignStatus = a.AssignStatus,
-                IsLocked = a.IsLocked == true, // Ép kiểu an toàn trên C#
+                IsLocked = a.IsLocked == true,
                 
                 Files = versionsDb
                         .Where(v => v.AssignmentId == a.AssignmentId)
@@ -437,10 +437,21 @@ namespace DHSX.Web.Application.Services
                         {
                             VersionId = v.VersionId,
                             FileName = v.FileName,
-                            Version = v.VersionNumber,
-                            IsFinal = v.IsSelected == true, // Ép kiểu an toàn trên C#
-                            Notes = v.Note,
-                            UploadedAt = v.UploadedAt
+                            FilePath = v.FilePath,
+                            Version = v.VersionNumber, // Trả về là Version
+                            IsFinal = v.IsSelected == true, 
+                            Notes = v.Note, // Trả về là Notes
+                            UploadedAt = v.UploadedAt, // Trả về là UploadedAt
+                            
+                            // THÊM ĐOẠN NÀY ĐỂ MAP TÊN NHÂN VIÊN
+                            UploadedByName = v.UploadedBy.ToString() switch
+                            {
+                                "1" => "Admin Hệ Thống",
+                                "2" => "LĐ. Trần Thị C",
+                                "3" => "NV. Nguyễn Văn B",
+                                "4" => "NV. Lê Văn D",
+                                _ => "NV. Chưa xác định"
+                            }
                         }).ToList()
             }).ToList();
 
@@ -517,7 +528,15 @@ namespace DHSX.Web.Application.Services
                 Note = v.Note,
                 UploadedAt = v.UploadedAt ?? DateTime.Now,
                 IsSelected = v.IsSelected == true, // C# tự xử lý cái này, Oracle không cằn nhằn nữa
-                UploadedBy = (int)v.UploadedBy
+                UploadedBy = (int)v.UploadedBy,
+                UploadedByName = (int)v.UploadedBy switch
+                {
+                    1 => "Admin Hệ Thống",
+                    2 => "LĐ. Trần Thị C",
+                    3 => "NV. Nguyễn Văn B",
+                    4 => "NV. Lê Văn D",
+                    _ => "NV. Chưa xác định"
+                }
             }).ToList();
 
             return versions;

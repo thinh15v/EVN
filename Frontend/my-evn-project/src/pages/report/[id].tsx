@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Button, Card, Col, Row, Typography, Collapse, Tag, Space, Upload, Empty, Spin, Modal, message } from 'antd';
+import { Button, Card, Col, Row, Typography, Collapse, Tag, Space, Upload, Empty, Spin, Modal, message, Divider } from 'antd';
 import { 
   LeftOutlined, TeamOutlined, LockOutlined, UnlockOutlined, 
-  InboxOutlined, DownloadOutlined, FileExcelOutlined, CheckCircleOutlined, ExclamationCircleOutlined
+  InboxOutlined, DownloadOutlined, FileTextOutlined, CheckCircleOutlined, ExclamationCircleOutlined , CloudUploadOutlined, DeleteOutlined
 } from '@ant-design/icons';
 import { ReportService } from '@/services/ReportService';
 import dayjs from 'dayjs';
@@ -26,7 +26,6 @@ export default function ReportDetail() {
   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
 
   // --- LOGIC KIỂM TRA KHÓA TOÀN CỤC ---
-  // Nếu globalStatus chứa chữ "khóa" hoặc "hoàn thành", coi như toàn bộ đợt bị khóa
   const globalStatusText = (reportInfo?.globalStatus || reportInfo?.GlobalStatus || "").toLowerCase();
   const isGlobalLocked = globalStatusText.includes("khóa") || globalStatusText.includes("hoàn thành");
 
@@ -47,7 +46,7 @@ export default function ReportDetail() {
 
       if (detailRes.success) {
         const reportData = detailRes.data.report || detailRes.data.Report;
-        setReportInfo(detailRes.data.report || detailRes.data.Report); 
+        setReportInfo(reportData); 
         setAssignments(detailRes.data.assignments || detailRes.data.Assignments || []); 
         const reportName = reportData?.reportName || reportData?.ReportName || 'Chi tiết Báo cáo';
         localStorage.setItem('currentReportName', reportName);
@@ -125,10 +124,89 @@ export default function ReportDetail() {
     }
   };
 
+  const handleDownloadFile = async (file: any, e: React.MouseEvent) => {
+  e.stopPropagation(); // Ngăn chặn việc click nhầm vào vùng Collapse
+  
+  // Lấy filePath từ data backend trả về (nhớ kiểm tra xem backend trả là filePath hay FilePath nhé)
+  const filePath = file.filePath || file.FilePath; 
+
+  if (!filePath) {
+    messageApi.error('Không tìm thấy đường dẫn file để tải!');
+    return;
+  }
+
+  try {
+    messageApi.loading({ content: 'Đang lấy liên kết tải...', key: 'download_file' });
+    
+    // Gọi API lấy link
+    const res = await ReportService.getDownloadLink(filePath);
+
+    if (res && res.success && res.downloadUrl) {
+      messageApi.success({ content: 'Đang tải xuống!', key: 'download_file', duration: 2 });
+      
+      // Mở link trong tab ẩn để trình duyệt tự động tải file về máy
+      const link = document.createElement('a');
+      link.href = res.downloadUrl;
+      link.target = '_blank';
+      link.setAttribute('download', file.fileName || file.FileName || 'Bao_Cao');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+    } else {
+      messageApi.error({ content: res.message || 'Lỗi khi lấy liên kết!', key: 'download_file' });
+    }
+  } catch (error) {
+    messageApi.error({ content: 'Lỗi kết nối máy chủ!', key: 'download_file' });
+  }
+};
+const handleUploadFinalFile = async (options: any) => {
+    const { file, onSuccess, onError } = options;
+    
+    try {
+      // Gọi API từ ReportService
+      const res = await ReportService.uploadFinalFile(Number(id), file);
+      
+      if (res && res.success) {
+        messageApi.success('Đã tải lên file tổng hợp thành công!');
+        onSuccess("ok"); // Báo cho giao diện Ant Design biết là đã upload xong
+        fetchDetailData(Number(id)); // Tải lại dữ liệu để lấy danh sách file mới nhất
+      } else {
+        messageApi.error(res.message || 'Lỗi khi tải lên file!');
+        onError(new Error(res.message));
+      }
+    } catch (error) {
+      messageApi.error('Lỗi kết nối máy chủ!');
+      onError(error);
+    }
+  };
+  const handleDeleteFinalFile = (fileId: number, fileName: string) => {
+    modalApi.confirm({
+      title: 'Xác nhận xóa file',
+      icon: <ExclamationCircleOutlined style={{ color: '#ff4d4f' }} />,
+      content: `Bạn có chắc chắn muốn xóa file "${fileName}" không?`,
+      okText: 'Xóa',
+      okType: 'danger',
+      cancelText: 'Hủy',
+      onOk: async () => {
+        try {
+          const res = await ReportService.deleteFinalFile(fileId);
+          if (res && res.success) {
+            messageApi.success('Đã xóa file thành công!');
+            fetchDetailData(Number(id)); // Load lại danh sách file
+          } else {
+            messageApi.error(res.message || 'Lỗi khi xóa file!');
+          }
+        } catch (error) {
+          messageApi.error('Lỗi kết nối máy chủ!');
+        }
+      }
+    });
+  };
+
   if (loading) return <div style={{ textAlign: 'center', padding: 100 }}><Spin size="large" /></div>;
 
   const collapseItems = assignments.map((assign: any, index: number) => {
-    // SỬA TẠI ĐÂY: isLocked sẽ là true nếu riêng Ban đó khóa HOẶC Admin khóa cả đợt
     const isLocked = assign.isLocked || assign.IsLocked || isGlobalLocked;
     const deptName = assign.deptName || assign.DeptName || 'Tên Ban';
     const assignStatus = assign.assignStatus || assign.AssignStatus || 'CHƯA CẬP NHẬT';
@@ -140,17 +218,22 @@ export default function ReportDetail() {
       label: <span style={{ fontSize: 16, fontWeight: 700, color: '#1e293b' }}>{deptName}</span>,
       extra: (
         <Space size="middle" onClick={(e) => e.stopPropagation()}>
-          <Tag color={isLocked ? "success" : "processing"} style={{ fontWeight: 600, padding: '4px 12px', borderRadius: 6 }}>
-            {isLocked ? "ĐÃ XÁC NHẬN" : assignStatus.toUpperCase()}
-          </Tag>
+          {isLocked ? (
+             <Tag style={{ fontWeight: 600, padding: '4px 12px', borderRadius: 6, color: '#10b981', backgroundColor: '#ecfdf5', borderColor: '#a7f3d0' }}>
+               ĐÃ XÁC NHẬN
+             </Tag>
+          ) : (
+             <Tag color="processing" style={{ fontWeight: 600, padding: '4px 12px', borderRadius: 6 }}>
+               {assignStatus.toUpperCase()}
+             </Tag>
+          )}
           
-          {/* Chỉ hiện nút Mở khóa nếu Ban đó bị khóa NHƯNG Admin chưa khóa toàn bộ đợt */}
           {isLocked && !isGlobalLocked && (
             <Button 
               size="small" 
               icon={<UnlockOutlined />} 
               onClick={() => handleUnlockAssignment(assignmentId, deptName)}
-              style={{ color: '#dc2626', borderColor: '#fecaca', fontWeight: 600, borderRadius: 4 }}
+              style={{ color: '#ef4444', borderColor: '#fca5a5', fontWeight: 600, borderRadius: 4 }}
             >
               Mở khóa
             </Button>
@@ -158,25 +241,83 @@ export default function ReportDetail() {
         </Space>
       ),
       style: { 
-        backgroundColor: isLocked ? '#ffffff' : '#f8fafc', 
-        border: isLocked ? '1px solid #e2e8f0' : '1px dashed #cbd5e1', 
+        backgroundColor: '#ffffff', 
+        border: '1px solid #f1f5f9', 
         borderRadius: 8, 
-        marginBottom: 16 
+        marginBottom: 16,
+        boxShadow: '0 1px 2px rgba(0,0,0,0.02)'
       },
       children: (
-        <div style={{ padding: '0 24px' }}>
+        <div style={{ padding: '0 24px', paddingBottom: '16px' }}>
           {filesList.length > 0 ? filesList.map((file: any, fIndex: number) => {
             const isFinal = file.isFinal || file.IsFinal;
+            const fileName = file.fileName || file.FileName || 'Chưa có tên file';
+            const version = file.version || file.Version || 1; // Backend trả là Version
+            const note = file.notes || file.Notes; // Backend trả là Notes (có s)
+            const createdAt = file.uploadedAt || file.UploadedAt || new Date(); // Backend trả là UploadedAt
+            const author = file.uploadedByName || file.UploadedByName || 'NV. Chưa xác định'; // Trường mới thêm
+
             return (
-              <div key={fIndex} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', border: isFinal ? '1px solid #bbf7d0' : '1px solid #e2e8f0', borderRadius: 8, marginBottom: 12, backgroundColor: isFinal ? '#f0fdf4' : '#ffffff' }}>
-                <Space size={12}>
-                  <FileExcelOutlined style={{ fontSize: 24, color: isFinal ? '#16a34a' : '#2563eb' }} />
-                  <div>
-                    <div style={{ fontWeight: 700 }}>{file.fileName || file.FileName}</div>
-                    <Text type="secondary" style={{ fontSize: 12 }}>v{file.version || file.Version || 1}</Text>
+              <div key={fIndex} style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center', 
+                padding: '16px', 
+                border: isFinal ? '1px solid #bbf7d0' : '1px solid #e2e8f0', 
+                borderRadius: 8, 
+                marginBottom: 12, 
+                backgroundColor: isFinal ? '#f0fdf4' : '#ffffff' 
+              }}>
+                <div style={{ display: 'flex', gap: '16px', flex: 1 }}>
+                  {/* Icon File */}
+                  <div style={{ paddingTop: 4 }}>
+                    <FileTextOutlined style={{ fontSize: 22, color: isFinal ? '#16a34a' : '#3b82f6' }} />
                   </div>
-                </Space>
-                {isFinal && <Tag color="#16a34a">BẢN CHỐT</Tag>}
+                  
+                  {/* Nội dung thông tin File */}
+                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    
+                    {/* Dòng 1: Tên file & Tag Bản chốt */}
+                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: 6 }}>
+                      <Text strong style={{ fontSize: 15, color: '#1e293b' }}>{fileName}</Text>
+                      {isFinal && (
+                        <Tag color="#22c55e" style={{ borderRadius: 12, marginLeft: 12, fontWeight: 600, border: 'none' }}>BẢN CHỐT</Tag>
+                      )}
+                    </div>
+                    
+                    {/* Dòng 2: Version, Thời gian, Người nộp */}
+                    <div style={{ marginBottom: note ? 12 : 0 }}>
+                      <Space separator={<span style={{color: '#cbd5e1'}}>|</span>} style={{ fontSize: 13, color: '#64748b' }}>
+                        <Tag style={{ margin: 0, borderRadius: 4, backgroundColor: '#f1f5f9', border: 'none', color: '#64748b', fontWeight: 500 }}>
+                          v{version}
+                        </Tag>
+                        <span>{dayjs(createdAt).format('HH:mm DD/MM/YYYY')}</span>
+                        <span>{author}</span>
+                      </Space>
+                    </div>
+
+                    {/* Dòng 3: Ghi chú (nếu có) */}
+                    {note && (
+                      <div style={{ 
+                        border: '1px solid #f1f5f9', 
+                        padding: '6px 12px', 
+                        borderRadius: 4, 
+                        backgroundColor: '#ffffff',
+                        width: 'fit-content', /* Ép chiều rộng vừa đủ nội dung thay vì inline-block */
+                        maxWidth: '100%'
+                      }}>
+                        <Text type="secondary" italic style={{ fontSize: 13 }}>Ghi chú: "{note}"</Text>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Nút Tải xuống */}
+                <Button 
+                  type="text" 
+                  icon={<DownloadOutlined style={{ fontSize: 20, color: '#3b82f6' }} />} 
+                  onClick={(e) => handleDownloadFile(file, e)}
+                />
               </div>
             );
           }) : (
@@ -206,26 +347,119 @@ export default function ReportDetail() {
               title={<span style={{ fontSize: 18, fontWeight: 'bold' }}>Tình hình nộp báo cáo của các Ban</span>}
               extra={
                 <Space>
-                  <Button disabled={isGlobalLocked} icon={<TeamOutlined />} onClick={() => setIsManageModalOpen(true)} style={{ color: '#2563eb', backgroundColor: '#eff6ff', fontWeight: 600 }}>Quản lý phân công</Button>
+                  <Button disabled={isGlobalLocked} icon={<TeamOutlined />} onClick={() => setIsManageModalOpen(true)} style={{ color: '#2563eb', backgroundColor: '#eff6ff', fontWeight: 600, border: 'none' }}>Quản lý phân công</Button>
                   {isGlobalLocked ? (
                     <Button icon={<UnlockOutlined />} style={{ fontWeight: 600 }}>Mở khóa toàn bộ</Button>
                   ) : (
-                    <Button icon={<LockOutlined />} onClick={handleLockAll} style={{ color: '#dc2626', backgroundColor: '#fef2f2', fontWeight: 600 }}>Khóa toàn bộ</Button>
+                    <Button icon={<LockOutlined />} onClick={handleLockAll} style={{ color: '#dc2626', backgroundColor: '#fef2f2', fontWeight: 600, border: 'none' }}>Khóa toàn bộ</Button>
                   )}
                 </Space>
               }
-              style={{ borderRadius: 12 }}
+              style={{ borderRadius: 12, boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
             >
               <Collapse defaultActiveKey={['0']} ghost items={collapseItems} />
             </Card>
           </Col>
 
+          {/* CỘT BÊN PHẢI: FILE TỔNG HỢP */}
           <Col span={8}>
-            <Card title={<div><CheckCircleOutlined /> File Báo Cáo Tổng Hợp</div>} style={{ borderRadius: 12 }}>
-              <Dragger disabled={isGlobalLocked} action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188">
-                <p className="ant-upload-drag-icon"><InboxOutlined style={{ color: isGlobalLocked ? '#cbd5e1' : '#60a5fa', fontSize: 48 }} /></p>
-                <p className="ant-upload-text">Kéo thả file tổng hợp vào đây</p>
-              </Dragger>
+            <Card 
+              styles={{ body: { padding: 0 } }} // Bỏ padding mặc định để làm header tràn viền
+              style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
+            >
+              {/* Header Card (Màu xanh dương nhạt) */}
+              <div style={{ backgroundColor: '#eff6ff', padding: '20px 24px', borderBottom: '1px solid #e2e8f0' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <CheckCircleOutlined style={{ color: '#312e81', fontSize: 22 }} />
+                  <span style={{ fontSize: 18, fontWeight: 700, color: '#312e81' }}>File Báo Cáo Tổng Hợp</span>
+                </div>
+                <div style={{ color: '#4f46e5', fontSize: 13, marginTop: 6, marginLeft: 32 }}>
+                  Nơi Admin lưu bản Final (Word/PDF)
+                </div>
+              </div>
+
+              {/* Nội dung Card */}
+              <div style={{ padding: '24px' }}>
+                
+                {/* Khu vực Upload */}
+                <Dragger 
+                  disabled={isGlobalLocked} 
+                  customRequest={handleUploadFinalFile} 
+                  showUploadList={false}
+                  style={{ 
+                    backgroundColor: '#ffffff', 
+                    border: '2px dashed #c7d2fe', // Viền đứt nét màu xanh nhạt
+                    borderRadius: 12,
+                    padding: '16px 0'
+                  }}
+                >
+                  <p className="ant-upload-drag-icon">
+                    <CloudUploadOutlined style={{ color: '#6366f1', fontSize: 48 }} />
+                  </p>
+                  <p className="ant-upload-text" style={{ color: '#1e3a8a', fontWeight: 600, fontSize: 15 }}>
+                    Kéo thả file tổng hợp vào đây
+                  </p>
+                  <p className="ant-upload-hint" style={{ color: '#818cf8', fontSize: 13 }}>
+                    hoặc click để chọn file từ máy tính
+                  </p>
+                </Dragger>
+
+                {/* Danh sách file Final */}
+                <div style={{ marginTop: 32 }}>
+                  <div style={{ marginBottom: 16 }}>
+                    <Text strong style={{ color: '#64748b', fontSize: 13, textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                      DANH SÁCH FILE FINAL
+                    </Text>
+                  </div>
+
+                  {finalFiles.length > 0 ? (
+                    finalFiles.map((file: any, index: number) => {
+                      const fileId = file.fileId || file.FileId;
+                      const fileName = file.fileName || file.FileName || 'Bao_cao_final';
+                      
+                      return (
+                        <div key={index} style={{ 
+                          display: 'flex', 
+                          justifyContent: 'space-between', 
+                          alignItems: 'center', 
+                          padding: '12px 16px', 
+                          border: '1px solid #f1f5f9', 
+                          borderRadius: 8, 
+                          marginBottom: 8,
+                          backgroundColor: '#f8fafc'
+                        }}>
+                          <Space>
+                            <FileTextOutlined style={{ fontSize: 18, color: '#3b82f6' }} />
+                            <Text strong style={{ color: '#334155' }}>{fileName}</Text>
+                          </Space>
+                          
+                          <Space size="small">
+                            {/* Nút Tải xuống (Dùng chung hàm handleDownloadFile lúc nãy) */}
+                            <Button 
+                              type="text" 
+                              icon={<DownloadOutlined style={{ color: '#3b82f6' }} />} 
+                              onClick={(e) => handleDownloadFile(file, e)}
+                            />
+                            {/* Nút Xóa */}
+                            {!isGlobalLocked && (
+                              <Button 
+                                type="text" 
+                                danger 
+                                icon={<DeleteOutlined />} 
+                                onClick={() => handleDeleteFinalFile(fileId, fileName)}
+                              />
+                            )}
+                          </Space>
+                        </div>
+                      )
+                    })
+                  ) : (
+                    <div style={{ textAlign: 'center', padding: '24px 0', color: '#94a3b8', fontStyle: 'italic', fontSize: 14 }}>
+                      Chưa có file tổng hợp nào.
+                    </div>
+                  )}
+                </div>
+              </div>
             </Card>
           </Col>
         </Row>

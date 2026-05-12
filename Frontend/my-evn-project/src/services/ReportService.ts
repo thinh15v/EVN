@@ -272,4 +272,61 @@ getReportDetailForDept: async (reportId: number) => {
       throw error;
     }
   },
+  // API: Lấy link tải file (cho tất cả các trang có file đính kèm)
+  getDownloadLink: async (filePath: string) => {
+    try {
+      const token = Cookies.get("accessToken");
+      // Sử dụng fetch tương tự các hàm ở trên
+      const response = await fetch(`http://localhost:5048/api/Reports/download-link?filePath=${encodeURIComponent(filePath)}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+        }
+      });
+      return await response.json();
+    } catch (error) {
+      console.error("Lỗi lấy link tải file:", error);
+      throw error;
+    }
+  },
+  // Upload file tổng hợp của Admin
+  uploadFinalFile: async (reportId: number, file: File) => {
+    try {
+      const token = Cookies.get("accessToken");
+      const formData = new FormData();
+      formData.append("file", file); // Tên field "file" phải khớp với IFormFile ở Backend
+
+      const response = await fetch(`http://localhost:5048/api/Reports/${reportId}/final-files`, {
+        method: 'POST',
+        headers: {
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+          // Lưu ý: Tuyệt đối KHÔNG set 'Content-Type': 'multipart/form-data' ở đây. 
+          // Trình duyệt sẽ tự động set kèm theo boundary khi dùng FormData.
+        },
+        body: formData
+      });
+      return await response.json();
+    } catch (error) {
+      console.error("Lỗi upload file tổng hợp:", error);
+      throw error;
+    }
+  },
+  // Xóa file tổng hợp của Admin
+  deleteFinalFile: async (fileId: number) => {
+    try {
+      const token = Cookies.get("accessToken");
+      const response = await fetch(`http://localhost:5048/api/Reports/final-files/${fileId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+        }
+      });
+      return await response.json();
+    } catch (error) {
+      console.error("Lỗi xóa file tổng hợp:", error);
+      throw error;
+    }
+  },
 };

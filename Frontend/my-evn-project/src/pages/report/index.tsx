@@ -29,6 +29,7 @@ export default function ReportList() {
   const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
   const [selectedReportId, setSelectedReportId] = useState<number | null>(null);
   const [selectedReportInfo, setSelectedReportInfo] = useState<any>(null);
+  const [currentAssignments, setCurrentAssignments] = useState<any[]>([]);
 
   useEffect(() => {
     fetchReportData();
@@ -54,6 +55,7 @@ export default function ReportList() {
           percent: item.totalAssigned > 0 ? Math.round((item.totalCompleted / item.totalAssigned) * 100) : 0,
           count: `${item.totalCompleted || 0}/${item.totalAssigned || 0}`,
           status: role === 'admin' ? item.globalStatus : (item.assignStatus || 'CHƯA CẬP NHẬT'),
+          rawAssignments: item.assignments || item.Assignments || [],
         }));
         setData(formattedData);
       } else {
@@ -146,6 +148,11 @@ export default function ReportList() {
             e.stopPropagation();
             setSelectedReportId(Number(record.key)); 
             setSelectedReportInfo({ reportName: record.name, reportCode: record.id });
+            
+            // Lấy dữ liệu phân công gốc từ record
+            // Lưu ý: record.rawAssignments là biến chúng ta sẽ tạo ở bước fetch dữ liệu
+            setCurrentAssignments(record.rawAssignments || []); 
+            
             setIsAuditModalOpen(true);
           }} 
         />
@@ -217,14 +224,15 @@ export default function ReportList() {
 
       {/* --- ĐÃ ĐỒNG BỘ TÊN BIẾN Ở ĐÂY --- */}
       {selectedReportId && (
-        <AuditLogModal 
+      <AuditLogModal 
         isOpen={isAuditModalOpen}
         onClose={() => setIsAuditModalOpen(false)}
         reportId={selectedReportId!}
         reportInfo={selectedReportInfo}
-        currentAssignments={[]} // <--- TRUYỀN DANH SÁCH BAN Ở ĐÂY
+        // TRUYỀN BIẾN STATE ĐÃ CẬP NHẬT Ở ĐÂY
+        currentAssignments={currentAssignments} 
       />
-      )}
+    )}
     </div>
   );
 }

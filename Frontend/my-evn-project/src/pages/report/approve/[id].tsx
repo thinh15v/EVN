@@ -146,7 +146,7 @@ export default function ApproveReport() {
         <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 20px' }}>
           
           <Card style={{ borderRadius: 12, border: 'none', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-            <Space direction="vertical" size={24} style={{ width: '100%' }}>
+            <Space orientation="vertical" size={24} style={{ width: '100%' }}>
               
               {/* Header */}
               <Row justify="space-between" align="top">
@@ -169,7 +169,7 @@ export default function ApproveReport() {
 
               {/* Hướng dẫn hoặc Thông báo đã khóa */}
               <Alert
-                message={
+                title={
                   <Text strong style={{ color: isLocked ? '#166534' : '#1e40af' }}>
                     {isLocked ? "Ban đã chốt số liệu thành công" : "Hướng dẫn phê duyệt:"}
                   </Text>

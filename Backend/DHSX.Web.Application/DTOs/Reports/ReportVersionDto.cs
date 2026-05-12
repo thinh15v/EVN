@@ -9,4 +9,5 @@ public class ReportVersionDto
     public DateTime UploadedAt { get; set; }
     public bool IsSelected { get; set; }
     public int UploadedBy { get; set; }
+    public string UploadedByName { get; set; }
 }
