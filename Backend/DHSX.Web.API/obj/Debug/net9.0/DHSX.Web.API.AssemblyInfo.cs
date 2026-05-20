@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DHSX.Web.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53c43c4f2e27a677642b34deef195af6ebe465b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c34bf06f451a30c37f8dbce0e6f86915c457d873")]
 [assembly: System.Reflection.AssemblyProductAttribute("DHSX.Web.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DHSX.Web.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

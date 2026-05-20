@@ -1,12 +1,15 @@
 import Cookies from "js-cookie";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const ReportService = {
+
+    
 
   // Hàm gọi API lấy danh sách báo cáo (cho trang ReportList)
   getReports: async () => {
     try {
-      const response = await fetch(`http://localhost:5048/api/Reports/list`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/list`, {
         method: 'GET',
         headers: {
         }
@@ -23,7 +26,7 @@ export const ReportService = {
   // Hàm gọi API tạo báo cáo mới (cho trang CreateReport)
 createReport: async (payload: any) => {
     try {
-      const response = await fetch(`http://localhost:5048/api/Reports/create`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',},
@@ -50,7 +53,7 @@ createReport: async (payload: any) => {
   getReportDetail: async (id: number) => {
     try {
       const token = Cookies.get("accessToken");
-      const response = await fetch(`http://localhost:5048/api/Reports/${id}/timeline`, { // Gọi API timeline của bạn
+      const response = await fetch(`${BASE_URL}/api/Reports/${id}/timeline`, { // Gọi API timeline của bạn
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +71,7 @@ createReport: async (payload: any) => {
   getFinalFiles: async (id: number) => {
     try {
       const token = Cookies.get("accessToken");
-      const response = await fetch(`http://localhost:5048/api/Reports/${id}/final-files`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/${id}/final-files`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +89,7 @@ createReport: async (payload: any) => {
     try {
       const token = Cookies.get("accessToken");
       // Gọi đúng đuôi /detail mà mình vừa viết ở C#
-      const response = await fetch(`http://localhost:5048/api/Reports/${id}/detail`, { 
+      const response = await fetch(`${BASE_URL}/api/Reports/${id}/detail`, { 
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +106,7 @@ createReport: async (payload: any) => {
   getReportsByDept: async (deptId: number) => {
     try {
       const token = Cookies.get("accessToken");
-      const response = await fetch(`http://localhost:5048/api/Reports/dept/${deptId}`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/dept/${deptId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -120,7 +123,7 @@ createReport: async (payload: any) => {
   lockAllAssignments: async (reportId: number) => {
     try {
       const token = Cookies.get("accessToken");
-      const response = await fetch(`http://localhost:5048/api/Reports/${reportId}/lock-all`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/${reportId}/lock-all`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -138,7 +141,7 @@ createReport: async (payload: any) => {
   updateAssignments: async (reportId: number, departmentIds: number[]) => {
     try {
       const token = Cookies.get("accessToken");
-      const response = await fetch(`http://localhost:5048/api/Reports/${reportId}/assignments`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/${reportId}/assignments`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +159,7 @@ createReport: async (payload: any) => {
   unlockAssignment: async (payload: { assignmentId: number, userId: number, reason: string }) => {
     try {
       const token = Cookies.get("accessToken");
-      const response = await fetch(`http://localhost:5048/api/Reports/unlock`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/unlock`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -174,7 +177,7 @@ createReport: async (payload: any) => {
 
   getReportTimeline: async (reportId: number) => {
       try {
-          const response = await fetch(`http://localhost:5048/api/Reports/${reportId}/timeline`);
+          const response = await fetch(`${BASE_URL}/api/Reports/${reportId}/timeline`);
           return await response.json();
       } catch (error) {
           console.error("Lỗi lấy timeline:", error);
@@ -185,7 +188,7 @@ createReport: async (payload: any) => {
 getReportDetailForDept: async (reportId: number) => {
   try {
     const token = Cookies.get("accessToken");
-    const response = await fetch(`http://localhost:5048/api/Reports/${reportId}/detail`, {
+    const response = await fetch(`${BASE_URL}/api/Reports/${reportId}/detail`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -226,7 +229,7 @@ getReportDetailForDept: async (reportId: number) => {
      */
     uploadReportFile: async (formData: FormData) => {
         try {
-            const response = await fetch(`http://localhost:5048/api/Reports/upload`, {
+            const response = await fetch(`${BASE_URL}/api/Reports/upload`, {
                 method: 'POST',
                 body: formData, // Không để Content-Type vì FormData tự định nghĩa
             });
@@ -241,7 +244,7 @@ getReportDetailForDept: async (reportId: number) => {
     try {
       const token = Cookies.get("accessToken");
       // Gọi API lấy riêng danh sách file (Bạn nhớ tạo endpoint này ở Controller C# nhé)
-      const response = await fetch(`http://localhost:5048/api/Reports/${reportId}/versions/${deptId}`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/${reportId}/versions/${deptId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -258,7 +261,7 @@ getReportDetailForDept: async (reportId: number) => {
   approveReport: async (payload: any) => {
     try {
       const token = Cookies.get("accessToken");
-      const response = await fetch(`http://localhost:5048/api/Reports/approve`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/approve`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -277,7 +280,7 @@ getReportDetailForDept: async (reportId: number) => {
     try {
       const token = Cookies.get("accessToken");
       // Sử dụng fetch tương tự các hàm ở trên
-      const response = await fetch(`http://localhost:5048/api/Reports/download-link?filePath=${encodeURIComponent(filePath)}`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/download-link?filePath=${encodeURIComponent(filePath)}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -297,7 +300,7 @@ getReportDetailForDept: async (reportId: number) => {
       const formData = new FormData();
       formData.append("file", file); // Tên field "file" phải khớp với IFormFile ở Backend
 
-      const response = await fetch(`http://localhost:5048/api/Reports/${reportId}/final-files`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/${reportId}/final-files`, {
         method: 'POST',
         headers: {
           ...(token ? { 'Authorization': `Bearer ${token}` } : {})
@@ -316,7 +319,7 @@ getReportDetailForDept: async (reportId: number) => {
   deleteFinalFile: async (fileId: number) => {
     try {
       const token = Cookies.get("accessToken");
-      const response = await fetch(`http://localhost:5048/api/Reports/final-files/${fileId}`, {
+      const response = await fetch(`${BASE_URL}/api/Reports/final-files/${fileId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

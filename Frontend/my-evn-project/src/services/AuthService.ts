@@ -1,11 +1,13 @@
 // src/services/AuthService.ts
 import Cookies from 'js-cookie';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export const AuthService = {
   // Hàm đăng nhập mô phỏng
   loginMock: async (username: string) => {
     try {
-      const response = await fetch(`http://localhost:5048/api/Auth/login`, {
+      const response = await fetch(`${BASE_URL}/api/Auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         // Gửi password mặc định vì Backend mock của bạn đang bỏ qua password

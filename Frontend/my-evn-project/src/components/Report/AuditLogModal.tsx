@@ -190,7 +190,6 @@ export default function AuditLogModal({ isOpen, onClose, reportId, reportInfo, c
           <HistoryOutlined style={{ fontSize: 18, color: '#2563eb' }} />
           <Text strong style={{ fontSize: 16 }}>Lịch sử toàn hệ thống (Audit Log)</Text>
         </Space>
-        <Text type="secondary" style={{cursor: 'pointer', fontSize: 18}} onClick={onClose}>✕</Text>
       </div>
 
       <div style={{ padding: '20px', maxHeight: '80vh', overflowY: 'auto' }}>
