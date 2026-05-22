@@ -446,6 +446,7 @@ namespace DHSX.Web.Application.Services
             var assignments = assignmentsDb.Select(a => new
             {
                 AssignmentId = a.AssignmentId,
+                DeptId = a.DeptId,
                 DeptName = departments.FirstOrDefault(d => d.DeptId == a.DeptId)?.DeptName ?? "Không rõ",
                 AssignStatus = a.AssignStatus,
                 IsLocked = a.IsLocked == true,

@@ -98,8 +98,12 @@ export const ReportService = {
    */
   uploadReportFile: async (formData: FormData) => {
     try {
-      // Axios tự động nhận diện FormData và cấu hình Content-Type thành multipart/form-data
-      const response = await axiosClient.post('/api/Reports/upload', formData);
+      // Bổ sung tham số thứ 3 là { headers: ... } để ép kiểu multipart
+      const response = await axiosClient.post('/api/Reports/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return response.data;
     } catch (error: any) {
       console.error("Upload error:", error);
@@ -128,9 +132,13 @@ export const ReportService = {
   // Upload file tổng hợp của Admin
   uploadFinalFile: async (reportId: number, file: File) => {
     const formData = new FormData();
-    formData.append("file", file); // Tên field "file" phải khớp với IFormFile ở Backend
+    formData.append("file", file);
 
-    const response = await axiosClient.post(`/api/Reports/${reportId}/final-files`, formData);
+    const response = await axiosClient.post(`/api/Reports/${reportId}/final-files`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return response.data;
   },
 
