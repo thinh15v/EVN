@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Form, Input, Select, DatePicker, Checkbox, Row, Col, Button, message, Spin } from 'antd';
 import { ReportService } from '@/services/ReportService';
 import { DepartmentService } from '@/services/DepartmentsService';
-import Cookies from "js-cookie";
 
 interface Props {
   open: boolean;
@@ -74,6 +73,7 @@ export default function CreateReportModal({ open, onCancel, onSuccess }: Props) 
 
   return (
     <Modal
+      forceRender
       title={<span style={{ fontSize: 18, fontWeight: 'bold' }}>Khởi tạo đợt báo cáo mới</span>}
       open={open}
       onCancel={onCancel}
