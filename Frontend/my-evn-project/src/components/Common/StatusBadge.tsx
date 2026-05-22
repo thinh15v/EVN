@@ -1,5 +1,4 @@
 // src/components/Common/StatusBadge.tsx
-import React from 'react';
 
 export const StatusBadge = ({ status }: { status: string }) => {
   const map: Record<string, string> = {

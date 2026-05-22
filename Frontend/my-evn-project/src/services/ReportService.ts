@@ -1,20 +1,21 @@
 import axiosClient from '@/utils/axiosClient';
+import { ApiResponse, ReportCreatePayload } from '@/types/report';
 
 export const ReportService = {
   // Hàm gọi API lấy danh sách báo cáo (cho trang ReportList)
-  getReports: async () => {
+  getReports: async (): Promise<ApiResponse<any[]>> => {
     const response = await axiosClient.get('/api/Reports/list');
     return response.data;
   },
 
   // Hàm gọi API tạo báo cáo mới (cho trang CreateReport)
-  createReport: async (payload: any) => {
+  createReport: async (payload: ReportCreatePayload): Promise<ApiResponse<any>> => {
     const response = await axiosClient.post('/api/Reports/create', payload);
     return response.data;
   },
 
   // Lấy thông tin chi tiết và tiến độ của báo cáo
-  getReportDetail: async (id: number) => {
+  getReportDetail: async (id: number): Promise<ApiResponse<any>> => {
     const response = await axiosClient.get(`/api/Reports/${id}/timeline`);
     return response.data;
   },
@@ -32,7 +33,7 @@ export const ReportService = {
   },
 
   // Lấy danh sách báo cáo theo Ban (cho trang DeptReportList)
-  getReportsByDept: async (deptId: number) => {
+  getReportsByDept: async (deptId: number): Promise<ApiResponse<any[]>> => {
     const response = await axiosClient.get(`/api/Reports/dept/${deptId}`);
     return response.data;
   },

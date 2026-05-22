@@ -1,74 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Button, Input, Tag, Progress, Space, Typography, message } from 'antd';
+import React from 'react';
+import { Table, Button, Input, Tag, Progress, Space, Typography } from 'antd';
 import { SearchOutlined, PlusOutlined, HistoryOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
-import { ReportService } from '@/services/ReportService';
-import CreateReportModal from '@/components/Report/CreateReportModal'; 
-import AuditLogModal from '@/components/Report/AuditLogModal'; // Đảm bảo đúng đường dẫn
+import CreateReportModal from '@/components/Report/CreateReportModal';
+import AuditLogModal from '@/components/Report/AuditLogModal';
 import { useRouter } from 'next/router';
-import { useRole } from '@/context/RoleContext';
+import { useReport } from '@/hooks/useReport';
 
 const { Text } = Typography;
 
 export default function ReportList() {
-  const { role } = useRole(); 
   const router = useRouter();
-  // 1. Kiểm tra xem có đang ở môi trường trình duyệt (window) không
-  const userStr = typeof window !== 'undefined' ? localStorage.getItem("currentUser") : null;
-  
-  // 2. Nếu có dữ liệu thì parse, không thì gán rỗng
-  const currentUser = userStr ? JSON.parse(userStr) : {};
-  
-  // 3. Lấy ID an toàn bằng dấu ?. để tránh lỗi khi currentUser rỗng trên server
-  const departmentId = currentUser?.department?.deptId || currentUser?.deptId || currentUser?.departmentId;
-  const [data, setData] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // --- FIX LỖI BIẾN Ở ĐÂY ---
-  const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
-  const [selectedReportId, setSelectedReportId] = useState<number | null>(null);
-  const [selectedReportInfo, setSelectedReportInfo] = useState<any>(null);
-  const [currentAssignments, setCurrentAssignments] = useState<any[]>([]);
-
-  useEffect(() => {
-    fetchReportData();
-  }, [role]);
-
-  const fetchReportData = async () => {
-    setLoading(true);
-    try {
-      let result;
-      if (role === 'admin') {
-        result = await ReportService.getReports();
-      } else {
-        result = await ReportService.getReportsByDept(departmentId);
-      }
-
-      if (result && result.success) {
-        const formattedData = result.data.map((item: any) => ({
-          key: item.reportId,
-          id: item.reportCode,
-          name: item.reportName,
-          type: item.reportType,
-          deadline: item.deadline ? dayjs(item.deadline).format('YYYY-MM-DD HH:mm') : 'Chưa có hạn',
-          percent: item.totalAssigned > 0 ? Math.round((item.totalCompleted / item.totalAssigned) * 100) : 0,
-          count: `${item.totalCompleted || 0}/${item.totalAssigned || 0}`,
-          status: role === 'admin' ? item.globalStatus : (item.assignStatus || 'CHƯA CẬP NHẬT'),
-          rawAssignments: item.assignments || item.Assignments || [],
-        }));
-        setData(formattedData);
-      } else {
-        message.error(result?.message || 'Không thể lấy dữ liệu báo cáo!');
-        setData([]);
-      }
-    } catch (error) {
-      console.error("Lỗi API:", error);
-      message.error('Mất kết nối đến máy chủ API!');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    role,
+    departmentId,
+    filteredData,
+    loading,
+    searchText,
+    setSearchText,
+    isModalOpen,
+    setIsModalOpen,
+    openCreateModal,
+    fetchReportData,
+    isAuditModalOpen,
+    selectedReportId,
+    selectedReportInfo,
+    currentAssignments,
+    openAuditLog,
+    closeAuditLog,
+  } = useReport();
 
   const columns = [
     {
@@ -146,14 +106,7 @@ export default function ReportList() {
           style={{ fontSize: 18, color: '#94a3b8', cursor: 'pointer' }}
           onClick={(e) => {
             e.stopPropagation();
-            setSelectedReportId(Number(record.key)); 
-            setSelectedReportInfo({ reportName: record.name, reportCode: record.id });
-            
-            // Lấy dữ liệu phân công gốc từ record
-            // Lưu ý: record.rawAssignments là biến chúng ta sẽ tạo ở bước fetch dữ liệu
-            setCurrentAssignments(record.rawAssignments || []); 
-            
-            setIsAuditModalOpen(true);
+            openAuditLog(Number(record.key), record.name, record.id, record.rawAssignments || []);
           }} 
         />
         <Button 
@@ -197,7 +150,10 @@ export default function ReportList() {
         <Input 
           placeholder="Tìm kiếm tên báo cáo, mã..." 
           prefix={<SearchOutlined style={{ color: '#94a3b8' }} />} 
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
           style={{ width: 320, borderRadius: 8, height: 42, backgroundColor: '#ffffff', border: 'none', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}
+          allowClear
         />
         
         {role === 'admin' && (
@@ -213,7 +169,7 @@ export default function ReportList() {
       </div>
 
       <div style={{ backgroundColor: '#ffffff', padding: '24px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-        <Table columns={columns} dataSource={data} pagination={false} loading={loading} />
+        <Table columns={columns} dataSource={filteredData} pagination={false} loading={loading} />
       </div>
 
       <CreateReportModal 
@@ -226,7 +182,7 @@ export default function ReportList() {
       {selectedReportId && (
       <AuditLogModal 
         isOpen={isAuditModalOpen}
-        onClose={() => setIsAuditModalOpen(false)}
+        onClose={closeAuditLog}
         reportId={selectedReportId!}
         reportInfo={selectedReportInfo}
         // TRUYỀN BIẾN STATE ĐÃ CẬP NHẬT Ở ĐÂY
