@@ -1,41 +1,39 @@
-// src/services/AuthService.ts
 import Cookies from 'js-cookie';
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+import axiosClient from '@/utils/axiosClient';
 
 export const AuthService = {
   // Hàm đăng nhập mô phỏng
   loginMock: async (username: string) => {
     try {
-      const response = await fetch(`${BASE_URL}/api/Auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        // Gửi password mặc định vì Backend mock của bạn đang bỏ qua password
-        body: JSON.stringify({ username: username, password: 'any_password' }) 
+      // 1. axiosClient đã có sẵn BASE_URL, tự chuyển JSON nên code cực ngắn
+      const response = await axiosClient.post('/api/Auth/login', {
+        username: username,
+        password: 'any_password' // Gửi password mặc định
       });
 
-      if (!response.ok) {
-        throw new Error('Tài khoản không tồn tại hoặc lỗi máy chủ');
-      }
-
-      const resData = await response.json();
-      const userData = resData.data || resData; // Tùy cấu trúc trả về của C#
+      // 2. Dữ liệu trả về đã được dịch sẵn JSON, chỉ việc lấy từ response.data
+      const resData = response.data;
+      const userData = resData.data || resData; // Tùy cấu trúc C#
       const userId = userData.id || userData.userId;
 
-      // Lưu Token vào Cookie để các Service khác (như ReportService) tự động lấy dùng
+      // Lưu Token vào Cookie
       if (userData && userData.token) {
-        Cookies.set('accessToken', userData.token, { expires: 1 }); // Hết hạn sau 1 ngày
+        Cookies.set('accessToken', userData.token, { expires: 1 });
         localStorage.setItem('currentUser', JSON.stringify(userData));
         localStorage.setItem('currentUserId', userId.toString());
-        return { success: true, data: userData };
         
+        return { success: true, data: userData };
       }
       
-        
-      
       return { success: false, message: "Không tìm thấy token" };
+
     } catch (error: any) {
-      return { success: false, message: error.message };
+      // 3. Nếu lỗi 400, 401, 500... axios sẽ nhảy thẳng vào đây. 
+      // Do ta đã cấu hình file axiosClient.ts ở bước trước, error.message đã chứa sẵn lỗi tiếng Việt từ C#
+      return { 
+        success: false, 
+        message: error.message || 'Tài khoản không tồn tại hoặc lỗi máy chủ' 
+      };
     }
   },
 
@@ -43,5 +41,6 @@ export const AuthService = {
   logout: () => {
     Cookies.remove('accessToken');
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUserId'); // Cũ của bạn quên xóa cái này, tôi bổ sung cho sạch nhé
   }
 };
