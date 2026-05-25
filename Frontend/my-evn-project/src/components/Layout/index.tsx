@@ -120,11 +120,14 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
               <Menu
                 theme="dark"
                 mode="inline"
-                selectedKeys={[router.pathname.includes('/report') ? '1' : '']}
+                selectedKeys={[
+                  router.pathname.includes('/department') ? '2' : 
+                  router.pathname.includes('/report') ? '1' : ''
+                ]}
                 style={{ backgroundColor: '#1a2332', border: 'none' }}
                 items={[
                   { key: '1', icon: <FileTextOutlined />, label: 'Quản lý Báo cáo', onClick: () => router.push('/report') },
-                  { key: '2', icon: <TeamOutlined />, label: 'Quản lý Ban' },
+                  { key: '2', icon: <TeamOutlined />, label: 'Quản lý Ban', onClick: () => router.push('/department') },
                   { key: '3', icon: <SettingOutlined />, label: 'Cài đặt hệ thống' },
                 ]}
               />

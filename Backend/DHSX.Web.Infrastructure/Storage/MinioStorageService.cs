@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Minio;
 using Minio.DataModel.Args;   
-
+using System.Reactive.Linq;
 namespace DHSX.Web.Infrastructure.Storage
 {
     public class MinioStorageService : IStorageService
@@ -41,7 +41,7 @@ namespace DHSX.Web.Infrastructure.Storage
                     try
                     {
                         var listArgs = new ListObjectsArgs().WithBucket(_bucketName).WithPrefix("");
-                        var objects = await _minioClient.ListObjectsAsync(listArgs).ToListAsync();
+                        var objects = await _minioClient.ListObjectsAsync(listArgs).ToList();
                         Console.WriteLine($"[DEBUG] Objects in bucket '{_bucketName}':");
                         if (objects.Count == 0)
                         {

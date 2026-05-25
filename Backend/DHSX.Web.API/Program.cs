@@ -12,14 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// ==========================================
-// THÊM CẤU HÌNH CORS Ở ĐÂY ĐỂ NEXT.JS GỌI ĐƯỢC
-// ==========================================
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowNextJs", policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // Domain của Next.js
+        policy.WithOrigins("http://localhost:3000") 
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
@@ -52,9 +49,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// ==========================================
-// GỌI CORS Ở ĐÂY (PHẢI NẰM TRƯỚC UseAuthorization)
-// ==========================================
+
 app.UseCors("AllowNextJs");
 
 app.UseAuthorization();

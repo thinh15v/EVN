@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
-import { Modal, Form, Checkbox, Row, Col, Button } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Modal, Form, Checkbox, Row, Col, Button, Spin, message } from 'antd';
+// Đảm bảo import đúng đường dẫn service của bạn
+import { DepartmentService } from '@/services/DepartmentsService'; 
 
 interface Props {
   isOpen: boolean;
@@ -10,24 +12,51 @@ interface Props {
 
 export default function ManageAssignmentModal({ isOpen, onClose, onSave, currentAssignments }: Props) {
   const [manageForm] = Form.useForm();
+  
+  // STATE MỚI: Chứa danh sách phòng ban và trạng thái tải
+  const [departments, setDepartments] = useState<any[]>([]);
+  const [loadingDepts, setLoadingDepts] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
-      // KIỂM TRA KỸ: Lấy ID từ deptId (chữ thường) hoặc DeptId (chữ hoa) tùy theo API trả về
-      const assignedDeptIds = currentAssignments.map(a => {
-        // Trích xuất ID, hỗ trợ cả 2 kiểu đặt tên
-        const id = a.deptId !== undefined ? a.deptId : a.DeptId;
-        return Number(id); // Ép về kiểu số để so sánh chính xác với value của Checkbox
-      });
+      // 1. Gọi API lấy danh sách
+      fetchDepartments();
 
-      console.log("Các Ban đang được check:", assignedDeptIds); // Bạn có thể xem log ở F12 để kiểm tra
+      // 2. Dùng setTimeout để CHỜ Form của Ant Design mount xong
+      setTimeout(() => {
+        const assignedDeptIds = currentAssignments
+          .map(a => Number(a.deptId || a.DeptId))
+          .filter(id => !isNaN(id) && id !== 0); // Lọc bỏ các ID lỗi (nếu có)
 
-      // Gán giá trị vào Form
-      manageForm.setFieldsValue({ 
-        departmentIds: assignedDeptIds 
-      });
+        // 3. Gán giá trị vào Form sau khi đã chờ
+        manageForm.setFieldsValue({ 
+          departmentIds: assignedDeptIds 
+        });
+      }, 50); // Trễ 50ms là thời gian vàng để Form render
+
+    } else {
+      // Dọn dẹp khi đóng Modal
+      setDepartments([]);
     }
   }, [isOpen, currentAssignments, manageForm]);
+
+  // HÀM GỌI API LẤY PHÒNG BAN
+  const fetchDepartments = async () => {
+    setLoadingDepts(true);
+    try {
+      // Gọi service
+      const res = await DepartmentService.getAllDepartments();
+      if (res && res.data) {
+        setDepartments(res.data);
+      } else if (Array.isArray(res)) {
+        setDepartments(res);
+      }
+    } catch (error: any) {
+      message.error('Lỗi khi tải danh sách phòng ban: ' + error.message);
+    } finally {
+      setLoadingDepts(false);
+    }
+  };
 
   return (
     <Modal
@@ -35,24 +64,40 @@ export default function ManageAssignmentModal({ isOpen, onClose, onSave, current
       open={isOpen}
       onCancel={onClose}
       footer={null}
-      destroyOnHidden // Thêm dòng này để reset Modal hoàn toàn khi đóng
+      destroyOnHidden
       centered
     >
       <Form form={manageForm} layout="vertical" onFinish={onSave} style={{ marginTop: 24 }}>
-        <Form.Item
-          label={<span style={{ fontWeight: 600 }}>Cập nhật danh sách Ban thực hiện</span>}
-          name="departmentIds"
-        >
-          <Checkbox.Group style={{ width: '100%' }}>
-            <Row gutter={[16, 16]}>
-              {/* Lưu ý: Các value ở đây phải là KIỂU SỐ (Number) để khớp với dữ liệu từ API */}
-              <Col span={12}><Checkbox value={1}>Ban Kế hoạch</Checkbox></Col>
-              <Col span={12}><Checkbox value={2}>Ban Kỹ thuật</Checkbox></Col>
-              <Col span={12}><Checkbox value={3}>Ban Tài chính</Checkbox></Col>
-              <Col span={12}><Checkbox value={4}>Ban Quản lý dự án</Checkbox></Col>
-            </Row>
-          </Checkbox.Group>
-        </Form.Item>
+        
+        {/* ĐƯA SPIN RA NGOÀI CÙNG ĐỂ BỌC FORM.ITEM */}
+        <Spin spinning={loadingDepts} description="Đang tải danh sách Ban...">
+          <Form.Item
+            label={<span style={{ fontWeight: 600 }}>Cập nhật danh sách Ban thực hiện</span>}
+            name="departmentIds"
+          >
+            {/* BÂY GIỜ CHECKBOX.GROUP ĐÃ LÀ CON TRỰC TIẾP */}
+            <Checkbox.Group style={{ width: '100%' }}>
+              <Row gutter={[16, 16]}>
+                
+                {/* LẶP DỮ LIỆU ĐỘNG TỪ API THAY VÌ GÕ CỨNG */}
+                {departments.map((dept) => (
+                  <Col span={12} key={dept.deptId}>
+                    <Checkbox value={dept.deptId}>
+                      {dept.deptName}
+                    </Checkbox>
+                  </Col>
+                ))}
+
+                {!loadingDepts && departments.length === 0 && (
+                  <Col span={24}>
+                    <span style={{ color: '#999' }}>Không có dữ liệu phòng ban.</span>
+                  </Col>
+                )}
+
+              </Row>
+            </Checkbox.Group>
+          </Form.Item>
+        </Spin>
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12, marginTop: 32, borderTop: '1px solid #f0f0f0', paddingTop: 20 }}>
           <Button onClick={onClose}>Hủy bỏ</Button>

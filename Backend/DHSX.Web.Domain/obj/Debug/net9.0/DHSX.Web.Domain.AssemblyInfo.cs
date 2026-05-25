@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DHSX.Web.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53c43c4f2e27a677642b34deef195af6ebe465b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8307ad768d35759051b7da2f9abe2ffc056ff32d")]
 [assembly: System.Reflection.AssemblyProductAttribute("DHSX.Web.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DHSX.Web.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

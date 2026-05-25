@@ -14,7 +14,13 @@ pnpm dev
 bun dev
 ```
 
+**1. Cấu hình biến môi trường**
+Tạo một file `.env.local` từ file mẫu `.env.example` có sẵn:
+```bash
+cp .env.example .env.local
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    http://localhost:3000/report
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 

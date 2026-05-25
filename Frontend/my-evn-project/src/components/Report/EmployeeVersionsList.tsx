@@ -6,6 +6,8 @@ import {
   CheckSquareFilled, BorderOutlined 
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
+import { ReportService } from '@/services/ReportService';
+import { message } from 'antd';
 
 const { Text } = Typography;
 
@@ -16,6 +18,45 @@ interface EmployeeVersionsListProps {
 }
 
 export default function EmployeeVersionsList({ versions, selectedVersionId, onSelectVersion }: EmployeeVersionsListProps) {
+
+    const [messageApi] = message.useMessage();
+
+    const handleDownloadFile = async (file: any, e: React.MouseEvent) => {
+    e.stopPropagation(); // Ngăn chặn việc click nhầm vào vùng Collapse
+    
+    // Lấy filePath từ data backend trả về (nhớ kiểm tra xem backend trả là filePath hay FilePath nhé)
+    const filePath = file.filePath || file.FilePath; 
+  
+    if (!filePath) {
+      messageApi.error('Không tìm thấy đường dẫn file để tải!');
+      return;
+    }
+  
+    try {
+      messageApi.loading({ content: 'Đang lấy liên kết tải...', key: 'download_file' });
+      
+      // Gọi API lấy link
+      const res = await ReportService.getDownloadLink(filePath);
+  
+      if (res && res.success && res.downloadUrl) {
+        messageApi.success({ content: 'Đang tải xuống!', key: 'download_file', duration: 2 });
+        
+        // Mở link trong tab ẩn để trình duyệt tự động tải file về máy
+        const link = document.createElement('a');
+        link.href = res.downloadUrl;
+        link.target = '_blank';
+        link.setAttribute('download', file.fileName || file.FileName || 'Bao_Cao');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+  
+      } else {
+        messageApi.error({ content: res.message || 'Lỗi khi lấy liên kết!', key: 'download_file' });
+      }
+    } catch (error) {
+      messageApi.error({ content: 'Lỗi kết nối máy chủ!', key: 'download_file' });
+    }
+  };
   
   // Hàm chọn icon động dựa theo đuôi file
   const getFileIcon = (fileName: string = '') => {
@@ -38,6 +79,7 @@ export default function EmployeeVersionsList({ versions, selectedVersionId, onSe
         const vNum = v.versionNumber || v.VersionNumber || v.version || v.Version;
 
         return (
+          
           <div 
             key={vId}
             onClick={() => onSelectVersion(vId)}
@@ -76,7 +118,13 @@ export default function EmployeeVersionsList({ versions, selectedVersionId, onSe
                     </Space>
                   </Col>
                   <Col>
-                    <Button type="text" size="small" icon={<DownloadOutlined />} style={{ color: '#3b82f6', fontWeight: 500 }}>
+                    <Button 
+                      type="text" 
+                      size="small" 
+                      icon={<DownloadOutlined />} 
+                      style={{ color: '#3b82f6', fontWeight: 500 }}
+                      onClick={(e) => handleDownloadFile(v, e)}
+                    >
                       Tải file
                     </Button>
                   </Col>

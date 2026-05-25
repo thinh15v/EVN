@@ -31,10 +31,12 @@ export default function AuditLogModal({ isOpen, onClose, reportId, reportInfo, c
     }
   }, [isOpen, reportId]);
 
-  const loadTimeline = async () => {
+const loadTimeline = async () => {
     setLoading(true);
     try {
-      const res = await ReportService.getReportTimeline(reportId);
+      // Thêm ": any" vào đây để báo cho TypeScript biết bỏ qua việc check type của res
+      const res: any = await ReportService.getReportTimeline(reportId);
+      
       // Hỗ trợ cả camelCase và PascalCase từ Backend
       const eventsList = res?.data?.events || res?.data?.Events || [];
       if (Array.isArray(eventsList)) {
@@ -190,7 +192,6 @@ export default function AuditLogModal({ isOpen, onClose, reportId, reportInfo, c
           <HistoryOutlined style={{ fontSize: 18, color: '#2563eb' }} />
           <Text strong style={{ fontSize: 16 }}>Lịch sử toàn hệ thống (Audit Log)</Text>
         </Space>
-        <Text type="secondary" style={{cursor: 'pointer', fontSize: 18}} onClick={onClose}>✕</Text>
       </div>
 
       <div style={{ padding: '20px', maxHeight: '80vh', overflowY: 'auto' }}>
