@@ -12,6 +12,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use((config) => {
   const token = Cookies.get("accessToken");
   if (token) {
+    config.headers = config.headers || {};
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;

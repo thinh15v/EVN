@@ -2,8 +2,8 @@ import Cookies from 'js-cookie';
 import axiosClient from '@/utils/axiosClient';
 
 export const AuthService = {
-  // Hàm đăng nhập mô phỏng
-  loginMock: async (username: string) => {
+  // Thêm Promise<any> vào đây để TypeScript biết hàm trả về dữ liệu động
+  loginMock: async (username: string): Promise<any> => {
     try {
       // 1. axiosClient đã có sẵn BASE_URL, tự chuyển JSON nên code cực ngắn
       const response = await axiosClient.post('/api/Auth/login', {
@@ -12,7 +12,7 @@ export const AuthService = {
       });
 
       // 2. Dữ liệu trả về đã được dịch sẵn JSON, chỉ việc lấy từ response.data
-      const resData = response.data;
+      const resData = response.data as any;
       const userData = resData.data || resData; // Tùy cấu trúc C#
       const userId = userData.id || userData.userId;
 
@@ -37,8 +37,8 @@ export const AuthService = {
     }
   },
 
-  // Hàm đăng xuất
-  logout: () => {
+  // Hàm đăng xuất không trả về gì nên để là void
+  logout: (): void => {
     Cookies.remove('accessToken');
     localStorage.removeItem('currentUser');
     localStorage.removeItem('currentUserId'); // Cũ của bạn quên xóa cái này, tôi bổ sung cho sạch nhé
